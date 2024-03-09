@@ -24,7 +24,7 @@ from base.models import Usuario
 from consultorio.forms import PacienteForm, ConfirmDeleteForm, ConsultaForm, EstudioForm, GeneralEstudioForm, \
     TipoEstudioForm, LaboratorioForm, UserPasswordResetForm, UserSetPasswordForm, ConsultorioForm, \
     UserPasswordChangeForm, UsuarioConsultorioForm, UsuarioConsultorioRegisterForm
-from consultorio.models import Paciente, Consulta, Estudio, TipoEstudio, Laboratorio, Consultorio
+from consultorio.models import Paciente, Consulta, Estudio, TipoEstudio, Laboratorio, Consultorio, ArchivoConsulta
 
 
 def is_doc_or_admin(user):
@@ -614,6 +614,17 @@ class PacienteConsultaCreateOrUpdateMixin:
     form_class = ConsultaForm
     template_name = 'consultorio/paciente/consulta/add.html'
 
+    def form_valid(self, form):
+        retorno = super().form_valid(form)
+        files = form.cleaned_data['archivos']
+        for f in files:
+            archivo_consulta = {
+                'archivo': f,
+                'consulta': form.instance
+            }
+            ArchivoConsulta.objects.create(**archivo_consulta)
+        return retorno
+
     def get_success_url(self):
         return reverse('paciente-consultas', args=[self.kwargs.get('paciente_id')])
 
@@ -649,7 +660,7 @@ class PacienteConsultaUpdate(PermissionRequiredMixin, PacienteConsultaCreateOrUp
 
     def get_object(self, queryset=None):
         consultorio = self.request.user.consultorio
-        return Consulta.objects.get(id=self.kwargs['consulta_id'], consultorio=consultorio)
+        return Consulta.objects.get(id=self.kwargs['consulta_id'], paciente__consultorio=consultorio)
 
 
 class PacienteConsultaDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView):
@@ -659,7 +670,7 @@ class PacienteConsultaDelete(SuccessMessageMixin, PermissionRequiredMixin, Delet
 
     def get_object(self, queryset=None):
         consultorio = self.request.user.consultorio
-        return Consulta.objects.get(id=self.kwargs['consulta_id'], consultorio=consultorio)
+        return Consulta.objects.get(id=self.kwargs['consulta_id'], paciente__consultorio=consultorio)
 
     def get_success_url(self):
         return reverse('paciente-consultas', args=[self.kwargs.get('paciente_id')])
@@ -742,7 +753,7 @@ class PacienteEstudioUpdate(PermissionRequiredMixin, PacienteEstudioCreateOrUpda
 
     def get_object(self, queryset=None):
         consultorio = self.request.user.consultorio
-        return Estudio.objects.get(id=self.kwargs['estudio_id'], consultorio=consultorio)
+        return Estudio.objects.get(id=self.kwargs['estudio_id'], paciente__consultorio=consultorio)
 
 
 class PacienteEstudioDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView):
@@ -752,7 +763,7 @@ class PacienteEstudioDelete(SuccessMessageMixin, PermissionRequiredMixin, Delete
 
     def get_object(self, queryset=None):
         consultorio = self.request.user.consultorio
-        return Estudio.objects.get(id=self.kwargs['estudio_id'], consultorio=consultorio)
+        return Estudio.objects.get(id=self.kwargs['estudio_id'], paciente__consultorio=consultorio)
 
     def get_success_url(self):
         return reverse('paciente-estudio', args=[self.kwargs.get('paciente_id')])

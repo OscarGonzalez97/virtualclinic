@@ -7,6 +7,28 @@ from consultorio.constants import TIPOS_USERS
 from consultorio.models import Consultorio, Paciente, Consulta, Laboratorio, TipoEstudio, Estudio
 
 
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+        else:
+            result = single_file_clean(data, initial)
+        return result
+
+
+class FileFieldForm(forms.Form):
+    file_field = MultipleFileField()
+
+
 class UsuarioForm(forms.ModelForm):
     consultorio = forms.ModelChoiceField(queryset=Consultorio.objects.all())
 
@@ -32,9 +54,11 @@ class PacienteForm(forms.ModelForm):
 
 
 class ConsultaForm(forms.ModelForm):
+    archivos = MultipleFileField(required=False)
+
     class Meta:
         model = Consulta
-        fields = ('fecha', 'proxima_consulta', 'observacion', 'receta', 'receta_foto')
+        fields = ('fecha', 'proxima_consulta', 'observacion', 'receta', 'receta_foto', 'paciente')
         widgets = {
             'paciente': forms.HiddenInput(),
             'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker'}),
