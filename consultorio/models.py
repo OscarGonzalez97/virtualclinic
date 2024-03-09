@@ -26,8 +26,10 @@ class Paciente(models.Model):
     sexo = models.CharField(max_length=12, choices=SEX)
     fecha_nacimiento = models.DateField('Fecha de nacimiento', null=True, blank=True)
     nro_telefono = models.CharField('Número de teléfono', max_length=80, null=True, blank=True)
-    consultorio = models.ForeignKey(Consultorio, related_name='pacientes', null=True, blank=True, on_delete=models.SET_NULL)
-    usuario = models.OneToOneField(Usuario, related_name='usuario', null=True, blank=True, on_delete=models.SET_NULL)
+    email = models.EmailField('Email', blank=True, null=True)
+    consultorio = models.ForeignKey(Consultorio, related_name='pacientes', null=True, blank=True,
+                                    on_delete=models.SET_NULL)
+    usuario = models.OneToOneField(Usuario, related_name='usuario', null=True, blank=True, on_delete=models.CASCADE)
     nro_documento = models.CharField('Número de documento', max_length=80, null=True, blank=True)
 
     def __str__(self):
