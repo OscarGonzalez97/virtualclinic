@@ -31,8 +31,7 @@ class Paciente(models.Model):
     nro_documento = models.CharField('Número de documento', max_length=80, null=True, blank=True)
 
     def __str__(self):
-        consultorio_name = str(self.consultorio) if self.consultorio else ""
-        return f"{self.nombre_completo} {consultorio_name}".strip()
+        return f"{self.nombre_completo}".strip()
 
     def estudios_totales(self):
         total_estudios = 0
