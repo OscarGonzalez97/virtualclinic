@@ -61,10 +61,10 @@ class ConsultaForm(forms.ModelForm):
         fields = ('fecha', 'proxima_consulta', 'observacion', 'receta', 'receta_foto', 'paciente')
         widgets = {
             'paciente': forms.HiddenInput(),
-            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker'}),
+            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker-time'}),
             'observacion': forms.Textarea(),
             'receta': forms.Textarea(),
-            'fecha': forms.TextInput(attrs={'class': 'datepicker'}),
+            'fecha': forms.TextInput(attrs={'class': 'datepicker-time'}),
 
         }
 
@@ -92,8 +92,8 @@ class GeneralEstudioForm(forms.ModelForm):
         fields = ('fecha', 'proxima_consulta', 'resultado', 'tipo_estudio', 'laboratorio', 'paciente')
         widgets = {
             'paciente': forms.Select(attrs={'class': 'form-select'}),
-            'fecha': forms.TextInput(attrs={'class': 'datepicker'}),
-            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker'}),
+            'fecha': forms.TextInput(attrs={'class': 'datepicker-time'}),
+            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker-time'}),
             'resultado': forms.FileInput(),
             'tipo_estudio': forms.Select(attrs={'class': 'form-select'}),
             'laboratorio': forms.Select(attrs={'class': 'form-select'}),
@@ -123,8 +123,8 @@ class EstudioForm(forms.ModelForm):
         fields = ('fecha', 'proxima_consulta', 'resultado', 'tipo_estudio', 'laboratorio', 'paciente')
         widgets = {
             'paciente': forms.HiddenInput(),
-            'fecha': forms.TextInput(attrs={'class': 'datepicker'}),
-            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker'}),
+            'fecha': forms.TextInput(attrs={'class': 'datepicker-time'}),
+            'proxima_consulta': forms.TextInput(attrs={'class': 'datepicker-time'}),
             'resultado': forms.FileInput(),
             'tipo_estudio': forms.Select(attrs={'class': 'form-select'}),
             'laboratorio': forms.Select(attrs={'class': 'form-select'}),

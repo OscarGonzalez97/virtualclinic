@@ -118,6 +118,11 @@
           $(this).attr('onfocus', "(this.type='date')");
           $(this).attr('onblur', "if(!this.value)this.type='text'");
       });
+      $('.datepicker-time').each(function() {
+          // Agregar atributos onfocus y onblur
+          $(this).attr('onfocus', "(this.type='datetime-local')");
+          $(this).attr('onblur', "if(!this.value)this.type='text'");
+      });
       // inicializamos todos los input select
       $('select').select2({
         placeholder: 'Seleccione una opción',
