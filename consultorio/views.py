@@ -676,6 +676,19 @@ class PacienteConsultaUpdate(PermissionRequiredMixin, PacienteConsultaCreateOrUp
         return Consulta.objects.get(id=self.kwargs['consulta_id'], paciente__consultorio=consultorio)
 
 
+class ArchivoConsultaDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('consultorio.view_paciente', 'consultorio.delete_consulta')
+    model = ArchivoConsulta
+    success_message = "El archivo se ha eliminado correctamente."
+
+    def get_object(self, queryset=None):
+        consultorio = self.request.user.consultorio
+        return ArchivoConsulta.objects.get(id=self.kwargs['archivo_id'], consulta__paciente__consultorio=consultorio)
+
+    def get_success_url(self):
+        return reverse('paciente-consulta-edit', args=[self.kwargs.get('paciente_id'), self.kwargs.get('consulta_id')])
+
+
 class PacienteConsultaDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView):
     permission_required = ('consultorio.view_paciente', 'consultorio.delete_consulta')
     template_name = 'consultorio/paciente/consulta/delete.html'

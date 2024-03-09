@@ -82,8 +82,9 @@ urlpatterns = [
                 ])),
             ])),
         ])),
-
     ])),
+    path('archivo-consulta/<int:archivo_id>/<int:paciente_id>/<int:consulta_id>', views.ArchivoConsultaDelete.as_view(),
+         name='archivo-consulta-delete'),
     path('api/', include([
         path('auth/', include('base.urls')),
         # path('paciente/', include([
