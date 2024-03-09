@@ -1,0 +1,1136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- SITE TITLE -->
+        <title>Vetesoft</title>
+        <!-- Fonts -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+        <!-- Link of CSS files -->
+        <link href="{% static 'landing/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/animate.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/icofont.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/owl.carousel.min.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/owl.theme.default.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/magnific-popup.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/dark.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'landing/css/color/gradient-color-seven.css' %}" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{% static 'landing/img/favicon.ico' %}">
+        <style>
+          .blur-overlay {
+            position: relative;
+          }
+
+          .blur-overlay::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            backdrop-filter: blur(10px); /* Puedes ajustar el valor según sea necesario */
+            z-index: 1;
+          }
+        </style>
+    </head>
+    <body data-bs-spy="scroll" data-bs-offset="70">
+
+        <!-- START PRELOADER -->
+        <div class="preloader-wrap">
+            <div class="preloader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>   
+        </div>   
+        <!-- END PRELOADER -->
+
+        <!-- START NAVBAR -->
+        <nav class="navbar fixed-top navbar-expand-md navbar-light top-menu">
+            <div class="container">
+                <a class="navbar-brand" href="vetesoft.com.py">
+                    Vetesoft PY
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">Acerca</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#features" class="nav-link">Características</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#screenshots" class="nav-link">Capturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#pricing" class="nav-link">Precios</a>
+                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            <a href="#faqs" class="nav-link">Faqs</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a href="#blog" class="nav-link">Blog</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a href="#contact" class="nav-link">Contact</a>-->
+<!--                        </li>-->
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- END NAVBAR -->
+
+        <!-- START HOMEPAGE SLIDER -->
+        <div id="home" class="hompage-slides-wrapper angle-slides-wrapper-bg homes-bg-img">
+            <div class="homepage-slides owl-carousel owl-theme">
+                <div class="single-slider-item">
+                    <div class="slide-item-table">
+                        <div class="slide-item-tablecell">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12 col-lg-7">
+                                        <div class="slider-text">
+                                            <h1>Maneja toda tu veterinaria utilizando Vetesoft</h1>
+                                            <p>Vetesoft es tu aliado integral en la gestión eficiente de tu veterinaria. Con nuestro potente software especializado, simplificamos el día a día de los profesionales y administradores, permitiéndoles concentrarse en lo que más importa: el cuidado de los animales.</p>
+                                            
+                                            <div>
+                                                <a href="{% url 'user_register' %}" class="slide-btn-white mr-10">
+                                                    <i class="icofont-cloud-download"></i> 
+                                                    Registrarse
+                                                </a>
+                                                <a href="{% url 'user_login' %}" class="slide-btn-bordered">Iniciar sesión</a>
+                                            </div>
+                                        </div>
+                                    </div><!-- END COL -->
+                                    
+                                    <div class="col-md-12 col-lg-5">
+                                        <div class="welcome-phone">
+                                            <img src="{% static 'img/milo.png' %}" alt="Vetesoft PY Logo">
+                                        </div>
+                                    </div><!-- END COL -->
+                                </div><!-- END ROW -->
+                            </div><!-- END CONTAINER -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- END HOMEPAGE SLIDER -->
+
+        <!-- START APP-USERS-SECTION -->
+<!--        <section class="app-users-section hidden-div wow animate__animated animate__fadeInUp" data-wow-delay=".3s">   -->
+<!--            <div class="container"> -->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-2 offset-lg-5 col-xl-2 offset-xl-5"> -->
+<!--                        <div class="single-user">-->
+<!--                            <i class="icofont-brand-apple"></i>-->
+<!--                            <h3>ios <br> 205k</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="col-lg-2 col-xl-2"> -->
+<!--                        <div class="single-user">-->
+<!--                            <i class="icofont-brand-android-robot"></i>-->
+<!--                            <h3>Android <br> 305k</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="col-lg-2 col-xl-2"> -->
+<!--                        <div class="single-user">-->
+<!--                            <i class="icofont-cloud-download"></i>-->
+<!--                            <h3>Download <br> 510k</h3>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+        <!-- END APP-USERS-SECTION -->
+
+        <!-- START APP ABOUT SECTION -->
+        <section id="about" class="app-about-section angle-sp"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="section-title angle-section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>Acerca de nuestro software</h2>
+                            <p>Nuestra herramienta revolucionaria para veterinarias. Gestiona pacientes, tratamientos y más con eficiencia y precisión. Transforma tu práctica hoy.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+                
+                <div class="row"> 
+                    <div class="col-lg-7"> 
+                        <div class="app-about-text wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
+                            <h3>Mejor Plataforma Web</h3>
+                            <p>Vetesoft redefine la gestión veterinaria a través de su innovadora aplicación web. Nuestra plataforma integral simplifica la administración de pacientes, consultas y tratamientos con una interfaz intuitiva y personalizable. Desde la creación de planes de vacunación personalizados hasta la gestión de usuarios, Vetesoft ofrece eficiencia y control completo, elevando la calidad del cuidado animal. Con actualizaciones regulares y un compromiso con la excelencia, somos la elección líder para profesionales que buscan la mejor experiencia en gestión veterinaria en línea. </p>
+                            <p>Descubre por qué Vetesoft es la aplicación web preferida para potenciar tu práctica veterinaria.</p>
+    
+                            <ul> 
+                                <li><i class="icofont-verification-check"></i> Fácil de usar</li>
+                                <li><i class="icofont-verification-check"></i> Nuevas funcionalidades</li>
+                                <li><i class="icofont-verification-check"></i> Diseño increíble</li>
+                            </ul>
+                            
+                            <a href="veteadmin/login" class="default-button">
+                                <i class="icofont-cloud-download"></i> 
+                                Probar aplicación
+                            </a>
+                        </div>
+                    </div><!-- END COL -->
+                    
+                    <div class="col-lg-5"> 
+                        <div class="text-center wow animate__animated animate__fadeInUp" data-wow-delay=".9s">
+                            <img src="{% static 'landing/img/app-about.jpg' %}" alt="App About">
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div><!-- END CONTAINER -->
+        </section>
+        <!-- END APP ABOUT SECTION -->
+
+        <!-- START HOW IT WORKS SECTION -->
+        <section id="how-it-works" class="how-it-works angle-gray-bg"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>¿Cómo funciona?</h2>
+                            <p>Contáctanos para registrar tu veterinaria y comenzar a utilizar la aplicación. Si ya tienes un sistema, te ayudamos a importar/migrar tus datos. Simplifica tu gestión con Vetesoft.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+                
+                <div class="row"> 
+                    <div class="col-lg-6"> 
+                        <div class="hiw-feature-content"> 
+                            <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                                <i class="icofont-ssl-security"></i>
+                                <h4>Seguro</h4>
+                                <p>Software altamente seguro, brindándote tranquilidad. Sin preocupaciones en el aspecto de seguridad.</p>
+                            </div>
+                            
+                            <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> 
+                                <i class="icofont-test-tube-alt"></i>
+                                <h4>Testeado</h4>
+                                <p>Testeado por veterinarios y administradores para garantizar su usabilidad.</p>
+                            </div>
+                            
+                            <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
+                                <i class="icofont-light-bulb"></i>
+                                <h4>Enfoque</h4>
+                                <p>Enfócate y gestiona con facilidad. Optimiza tus tareas para un control total y una gestión eficiente.</p>
+                            </div>
+
+                            <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".6s">
+                                <i class="icofont-globe-alt"></i>
+                                <h4>Accesibilidad</h4>
+                                <p>Accede a tus datos desde cualquier lugar y a cualquier hora.</p>
+                            </div>
+                        </div>
+                    </div><!-- END COL -->
+                    
+                    <div class="col-lg-5 offset-lg-1"> 
+                        <div class="video-demo-content wow animate__animated animate__fadeInUp" data-wow-delay=".9s"> 
+                            <img src="{% static 'landing/img/video-demo.png' %}" alt="Video Demo Image" class="img-circle">
+                            <div class="play-video-icon">
+                                <!-- Change the video from here -->
+                                <a class="popup-youtube" href="https://www.youtube.com/watch?v=XywadL6eZew">
+                                    <i class="icofont-play"></i>
+                                    <div class="sonar-wrapper">
+                                        <div class="sonar-emitter">
+                                            <div class="sonar-wave"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div><!-- END CONTAINER -->
+        </section>
+        <!-- END HOW IT WORKS SECTION -->
+
+        <!-- START AWESOME FEATURES SECTION -->
+        <section id="features" class="awsome-features angle-sp"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>Características</h2>
+                        </div>
+                            <p>Descubre características increíbles que potenciarán tu experiencia. Gestiona tus pacientes, estudios, clientes y mucho más.</p>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+                
+                <div class="row"> 
+                    <div class="col-md-6 col-lg-6"> 
+                        <div class="single-feature wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> 
+                            <div class="feature-icon">
+                                <i class="icofont-iphone"></i>
+                            </div>
+                            <h4>Responsivo</h4>
+                            <p>Accede desde cualquier dispositivo ya sea computadora, celular o tablet</p>
+                        </div>
+                    </div><!-- END COL -->
+        
+                    <div class="col-md-6 col-lg-6"> 
+                        <div class="single-feature wow animate__animated animate__fadeInUp" data-wow-delay=".5s"> 
+                            <div class="feature-icon">
+                                <i class="icofont-headphone-alt-2"></i>
+                            </div>
+                            <h4>Atención al cliente</h4>
+                            <p>Contás con atención al cliente para solucionar cualquier inconveniente que tengas.</p>
+                        </div>
+                    </div><!-- END COL -->
+                    
+                    <div class="col-md-6 col-lg-6"> 
+                        <div class="single-feature wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
+                            <div class="feature-icon">
+                                <i class="icofont-ssl-security"></i>
+                            </div>
+                            <h4>Seguridad</h4>
+                            <p>Tus datos están seguros con nosotros.</p>
+                        </div>
+                    </div><!-- END COL -->
+                    
+                    <div class="col-md-6 col-lg-6"> 
+                        <div class="single-feature wow animate__animated animate__fadeInUp" data-wow-delay=".9s">
+                            <div class="feature-icon">
+                                <i class="icofont-space-shuttle"></i>
+                            </div>
+                            <h4>Actualizaciones</h4>
+                            <p>En constante desarrollo de nuevas funcionalidades que se irán agregando.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div><!-- END CONTAINER -->   
+        </section>
+        <!-- END AWESOME FEATURES SECTION -->
+
+        <!-- START COUNTER STATS SECTION -->
+<!--        <div id="counter" class="counter-stats angle-counter-stats"> -->
+<!--            <div class="container"> -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="counter-box wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> -->
+<!--                            <i class="icofont-users"></i>-->
+<!--                            <p>Users</p>-->
+<!--                            <h3 class="counter-number">2900</h3>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="counter-box wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> -->
+<!--                            <i class="icofont-heart-alt"></i>-->
+<!--                            <p>Happy Clients</p>-->
+<!--                            <h3 class="counter-number">2099</h3>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="counter-box wow animate__animated animate__fadeInUp" data-wow-delay=".5s"> -->
+<!--                            <i class="icofont-ui-rating"></i>-->
+<!--                            <p>Reviews</p>-->
+<!--                            <h3 class="counter-number">1999</h3>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="counter-box wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> -->
+<!--                            <i class="icofont-download-alt"></i>-->
+<!--                            <p>App Downloads</p>-->
+<!--                            <h3 class="counter-number">7899</h3>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; END CONTAINER &ndash;&gt;-->
+<!--        </div>-->
+        <!-- END COUNTER STATS SECTION -->
+
+        <!-- START APP SCREENSHOTS SECTION -->
+        <section id="screenshots" class="app-screenshots-section"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>Capturas de pantalla</h2>
+                            <p>Algunas capturas del módulo principal de Pacientes.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+                
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="screenshot-carousel owl-carousel owl-theme wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
+                            <div class="screenshot-item">
+                                <img src="{% static 'landing/img/screenshot/1.png' %}" alt="Screenshot Image">
+<!--                                <a href="#screenshot_details" class="screenshot-image" data-bs-toggle="modal" data-bs-target="#screenshot_details">-->
+<!--                                </a>-->
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="{% static 'landing/img/screenshot/2.png' %}" alt="Screenshot Image">
+<!--                                <a href="#screenshot_details" class="screenshot-image" data-bs-toggle="modal" data-bs-target="#screenshot_details">-->
+<!--                                </a>-->
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="{% static 'landing/img/screenshot/3.png' %}" alt="Screenshot Image">
+<!--                                <a href="#screenshot_details" class="screenshot-image" data-bs-toggle="modal" data-bs-target="#screenshot_details">-->
+<!--                                </a>-->
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="{% static 'landing/img/screenshot/4.png' %}" alt="Screenshot Image">
+<!--                                <a href="#screenshot_details" class="screenshot-image" data-bs-toggle="modal" data-bs-target="#screenshot_details">-->
+<!--                                </a>-->
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="{% static 'landing/img/screenshot/5.png' %}" alt="Screenshot Image">
+<!--                                <a href="#screenshot_details" class="screenshot-image" data-bs-toggle="modal" data-bs-target="#screenshot_details">-->
+<!--                                    -->
+<!--                                </a>-->
+                            </div>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div><!-- END CONTAINER -->
+    
+            <!-- SCREENSHOTS DETAILS MODAL -->
+<!--            <div class="modal right screenshots-modal fade" id="screenshot_details">-->
+<!--                <div class="modal-dialog" role="document">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <div class="screenshot-details-container">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-5 col-lg-5">-->
+<!--                                        <img src="{% static 'landing/img/screenshot/1.png' %}" alt="Screenshot Image" />-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                    <div class="col-md-7 col-lg-7">-->
+<!--                                        <div class="screenshot-details-text">-->
+
+<!--                                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>-->
+<!--                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>-->
+
+<!--                                            <ul>-->
+<!--                                                <li>-->
+<!--                                                    <i class="icofont icofont-check"></i>-->
+<!--                                                    High Resolution-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <i class="icofont icofont-check"></i>-->
+<!--                                                    Unique Design-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <i class="icofont icofont-check"></i>-->
+<!--                                                    Full Responsive-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <i class="icofont icofont-check"></i>-->
+<!--                                                    Clean Codes-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+
+<!--                                            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>-->
+<!--                                            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; modal-content &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; modal-dialog &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; End modal &ndash;&gt;-->
+        </section> 
+        <!-- END APP SCREENSHOTS SECTION -->
+
+        <!-- START TESTIMONIAL SECTION -->
+<!--        <section id="testimonial" class="testimonial-section angle-testimonial-section"> -->
+<!--            <div class="container"> -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-lg-12"> -->
+<!--                        <div class="testimonial-carousel owl-carousel owl-theme"> -->
+<!--                            <div class="testimonial-item">-->
+<!--                                <i class="icofont-quote-left"></i>-->
+<!--                                <p class="description">-->
+<!--                                    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros.</q>-->
+<!--                                </p>-->
+<!--                                <div class="testimonial-content">-->
+<!--                                    <div class="pic">-->
+<!--                                        <img src="{% static 'landing/img/client/1.png' %}" alt="client Image">-->
+<!--                                    </div>-->
+<!--                                    <h3 class="title">Tareq</h3>-->
+<!--                                    <span class="post">UI / UX Designer</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="testimonial-item">-->
+<!--                                <i class="icofont-quote-left"></i>-->
+<!--                                <p class="description">-->
+<!--                                    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros.</q>-->
+<!--                                </p>-->
+<!--                                <div class="testimonial-content">-->
+<!--                                    <div class="pic">-->
+<!--                                        <img src="{% static 'landing/img/client/2.png' %}" alt="Client Image">-->
+<!--                                    </div>-->
+<!--                                    <h3 class="title">Muttakin</h3>-->
+<!--                                    <span class="post">Web Developer</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="testimonial-item">-->
+<!--                                <i class="icofont-quote-left"></i>-->
+<!--                                <p class="description">-->
+<!--                                    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros.</q>-->
+<!--                                </p>-->
+<!--                                <div class="testimonial-content">-->
+<!--                                    <div class="pic">-->
+<!--                                        <img src="{% static 'landing/img/client/3.png' %}" alt="Client Image">-->
+<!--                                    </div>-->
+<!--                                    <h3 class="title">Miranda Joy</h3>-->
+<!--                                    <span class="post">Web Developer</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="testimonial-item">-->
+<!--                                <i class="icofont-quote-left"></i>-->
+<!--                                <p class="description">-->
+<!--                                    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros.</q>-->
+<!--                                </p>-->
+<!--                                <div class="testimonial-content">-->
+<!--                                    <div class="pic">-->
+<!--                                        <img src="{% static 'landing/img/client/4.png' %}" alt="Client Image">-->
+<!--                                    </div>-->
+<!--                                    <h3 class="title">Kristina</h3>-->
+<!--                                    <span class="post">Web Developer</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; END CONTAINER &ndash;&gt;-->
+<!--        </section>-->
+        <!-- END TESTIMONIAL SECTION -->
+
+        <!-- START PRICING TABLE SECTION -->
+        <section id="pricing" class="pricing-section"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-lg-12"> 
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>Precios</h2>
+                            <p>Actualmente contamos con un único plan promocional disponible a todos los que se <strong>registren hasta el 28/02/2024</strong></p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+                
+                <div class="row"> 
+                    <div class="col-md-12 col-lg-4 ">
+                        <div class="single-price-package wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> 
+                            <div class="price-header">
+                                <h3>Standard</h3>
+                                <h4 class="price-value">
+                                    <sup class="text-bottom">Gs.</sup>
+                                    <span class="text-large">150.000</span>
+                                    <span class="duration">/ por mes</span>
+                                </h4>
+                            </div>
+
+                            <ul class="price-list"> 
+                                <li>Módulo pacientes</li>
+                                <li>1 usuario administrativo</li>
+                                <li>20 usuarios veterinarios</li>
+                                <li>Usuarios cliente ilimitados</li>
+                                <li>Espacio disponible para archivos 5GB</li>
+                                <li>Soporte</li>
+                            </ul>
+                            
+                            <div class="price-footer">
+                                <a href="#" class="purchase-btn">Registrate</a>
+                            </div>
+                        </div><!-- END SINGLE PRICE PACKAGE -->
+                    </div><!-- END COL -->
+
+                    <div class="col-md-12 col-lg-4 blur-overlay">
+                        <div class="single-price-package personal-price-package wow animate__animated animate__fadeInUp" data-wow-delay=".5s"> 
+                            <div class="price-header">
+                                <h3>Standard</h3>
+                                <h4 class="price-value">
+                                    <sup class="text-bottom">Gs.</sup>
+                                    <span class="text-large">150.000</span>
+                                    <span class="duration">/ por mes</span>
+                                </h4>
+                            </div>
+
+                            <ul class="price-list">
+                                <li>Módulo pacientes</li>
+                                <li>1 usuario administrativo</li>
+                                <li>20 usuarios veterinarios</li>
+                                <li>Usuarios cliente ilimitados</li>
+                                <li>Espacio disponible para archivos 5GB</li>
+                                <li>Soporte</li>
+                            </ul>
+
+                            <div class="price-footer">
+                                <a href="#" class="purchase-btn">Registrate</a>
+                            </div>
+                        </div><!-- END SINGLE PRICE PACKAGE -->
+                    </div><!-- END COL -->
+                    
+                    <div class="col-md-12 col-lg-4 blur-overlay">
+                        <div class="single-price-package wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
+                            <div class="price-header">
+                                <h3>Standard</h3>
+                                <h4 class="price-value">
+                                    <sup class="text-bottom">Gs.</sup>
+                                    <span class="text-large">150.000</span>
+                                    <span class="duration">/ por mes</span>
+                                </h4>
+                            </div>
+
+                            <ul class="price-list">
+                                <li>Módulo pacientes</li>
+                                <li>1 usuario administrativo</li>
+                                <li>20 usuarios veterinarios</li>
+                                <li>Usuarios cliente ilimitados</li>
+                                <li>Espacio disponible para archivos 5GB</li>
+                                <li>Soporte</li>
+                            </ul>
+
+                            <div class="price-footer">
+                                <a href="#" class="purchase-btn">Registrate</a>
+                            </div>
+                        </div><!-- END SINGLE PRICE PACKAGE -->
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div>
+        </section>
+        <!-- END PRICING TABLE -->
+
+        <!-- START FAQS SECTION -->
+<!--        <section id="faqs" class="faqs-section angle-gray-bg"> -->
+<!--            <div class="container"> -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-lg-12"> -->
+<!--                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> -->
+<!--                            <h2>Frequently Asked Questions</h2>-->
+<!--                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--                -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-lg-5"> -->
+<!--                        <div class="text-center wow animate__animated animate__fadeInUp" data-wow-delay=".4s">-->
+<!--                            <img src="{% static 'landing/img/faq-img.png' %}" alt="Faq Image">-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-lg-7"> -->
+<!--                        <div class="accordion js-accordion wow animate__animated animate__fadeInUp" data-wow-delay=".5s">-->
+<!--                            <div class="accordion__item js-accordion-item active">-->
+<!--                                <div class="accordion-header js-accordion-header">Question One</div> -->
+<!--                                <div class="accordion-body js-accordion-body">-->
+<!--                                    <div class="accordion-body__contents">-->
+<!--                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in?</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>&lt;!&ndash; End accordion item &ndash;&gt;-->
+<!--                        -->
+<!--                            <div class="accordion__item js-accordion-item">-->
+<!--                                <div class="accordion-header js-accordion-header">Question Two</div> -->
+<!--                                <div class="accordion-body js-accordion-body">-->
+<!--                                    <div class="accordion-body__contents">-->
+<!--                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>&lt;!&ndash; End accordion item &ndash;&gt;-->
+<!--                            -->
+<!--                            <div class="accordion__item js-accordion-item">-->
+<!--                                <div class="accordion-header js-accordion-header">Question Three</div> -->
+<!--                                <div class="accordion-body js-accordion-body">-->
+<!--                                    <div class="accordion-body__contents">-->
+<!--                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>&lt;!&ndash; End accordion item &ndash;&gt;-->
+<!--                            -->
+<!--                            <div class="accordion__item js-accordion-item">-->
+<!--                                <div class="accordion-header js-accordion-header">Question Four</div> -->
+<!--                                <div class="accordion-body js-accordion-body">-->
+<!--                                    <div class="accordion-body__contents">-->
+<!--                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>&lt;!&ndash; End accordion item &ndash;&gt;-->
+<!--                            -->
+<!--                            <div class="accordion__item js-accordion-item">-->
+<!--                                <div class="accordion-header js-accordion-header">Question Six</div> -->
+<!--                                <div class="accordion-body js-accordion-body">-->
+<!--                                    <div class="accordion-body__contents">-->
+<!--                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi placeat distinctio dolor, amet magnam voluptatibus eos ex vero, sunt veritatis esse. Nostrum voluptatum et repudiandae vel sed, explicabo in.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>&lt;!&ndash; End accordion item &ndash;&gt;-->
+<!--                        </div>&lt;!&ndash; End accordion &ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; END CONTAINER &ndash;&gt;-->
+<!--        </section>-->
+        <!-- END FAQS SECTION -->
+
+        <!-- START TEAM SECTION -->
+        <section id="team" class="team-section angle-sp">
+<!--            <div class="container"> -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-lg-12"> -->
+<!--                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> -->
+<!--                            <h2>Equipo</h2>-->
+<!--                            <p></p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--                -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="single-member wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> -->
+<!--                            <div class="member-img">-->
+<!--                                <img src="{% static 'landing/img/team/1.jpg' %}" alt="Team Member Image">-->
+<!--                                <div class="overlay">-->
+<!--                                    <div class="member-info">-->
+<!--                                        <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>-->
+<!--                                        <div class="social-links">-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-facebook"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-twitter"></i>-->
+<!--                                            </a> -->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-linkedin"></i>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <h4 class="member-name">Steve Roberts</h4>-->
+<!--                            <p class="designation">CEO & Fouder</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="single-member wow animate__animated animate__fadeInUp" data-wow-delay=".5s"> -->
+<!--                            <div class="member-img">-->
+<!--                                <img src="{% static 'landing/img/team/2.jpg' %}" alt="Team Member Image">-->
+<!--                                <div class="overlay">-->
+<!--                                    <div class="member-info">-->
+<!--                                        <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>-->
+<!--                                        <div class="social-links">-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-facebook"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-twitter"></i>-->
+<!--                                            </a> -->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-linkedin"></i>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <h4 class="member-name">John Marshall</h4>-->
+<!--                            <p class="designation">UI/UX Designer</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="single-member wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> -->
+<!--                            <div class="member-img">-->
+<!--                                <img src="{% static 'landing/img/team/3.jpg' %}" alt="Team Member Image">-->
+<!--                                <div class="overlay">-->
+<!--                                    <div class="member-info">-->
+<!--                                        <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>-->
+<!--                                        <div class="social-links">-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-facebook"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-twitter"></i>-->
+<!--                                            </a> -->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-linkedin"></i>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <h4 class="member-name">Michael Cartney</h4>-->
+<!--                            <p class="designation">Front-End Developer</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-sm-6 col-lg-3"> -->
+<!--                        <div class="single-member wow animate__animated animate__fadeInUp" data-wow-delay=".7s"> -->
+<!--                            <div class="member-img">-->
+<!--                                <img src="{% static 'landing/img/team/4.jpg' %}" alt="Team Member Image">-->
+<!--                                <div class="overlay">-->
+<!--                                    <div class="member-info">-->
+<!--                                        <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>-->
+<!--                                        <div class="social-links">-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-facebook"></i>-->
+<!--                                            </a>-->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-twitter"></i>-->
+<!--                                            </a> -->
+<!--                                            <a href="#">-->
+<!--                                                <i class="icofont-linkedin"></i>-->
+<!--                                            </a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <h4 class="member-name">John Marshall</h4>-->
+<!--                            <p class="designation">UI/UX Designer</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; END CONTAINER &ndash;&gt;-->
+        </section>
+        <!-- END START TEAM SECTION -->
+
+        <!-- START APP DOWNLOAD SECTION -->
+        <section id="get" class="app-download-section angle-download-section">
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-lg-12"> 
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
+                            <h2>Disponible ahora</h2>
+                            <p>Regístrate ahora en Vetesoft: la mejor herramienta web para la gestión veterinaria. Potencia tu práctica con eficiencia y control.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+            </div><!-- END CONTAINER -->
+        </section>
+        <!-- END APP DOWNLOAD SECTION -->
+
+        <section class="p-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6 section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
+                        <img src="{% static 'landing/img/gato.jpg' %}" class="img-fluid" alt="gato en veterinaria">
+                    </div><!-- END COL -->
+                    <div class="col-lg-3"></div>
+                </div><!-- END ROW -->
+            </div>
+        </section>
+
+        <!-- START BLOG SECTION -->
+        <section id="blog" class="blog-section angle-sp">
+            <div class="container">
+<!--                <div class="row"> -->
+<!--                    <div class="col-lg-12"> -->
+<!--                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> -->
+<!--                            <h2>Latest Blog Post</h2>-->
+<!--                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--                -->
+<!--                <div class="row"> -->
+<!--                    <div class="col-md-12 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> -->
+<!--                        <div class="single-blog-post sm-one-col">-->
+<!--                            <div class="blog-img">-->
+<!--                                <a href="blog-details-right-sidebar.html">-->
+<!--                                    <img src="{% static 'landing/img/blog/1.jpg' %}" alt="Blog Post Image">-->
+<!--                                </a>-->
+<!--                                <div class="blog-date">20 Sep, 2021</div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="blog-info">-->
+<!--                                <h6 class="blog-title">-->
+<!--                                    <a href="blog-details-right-sidebar.html">Awesome app landing page</a>-->
+<!--                                </h6>-->
+<!--                                <div class="post-admin">-->
+<!--                                    By <a href="#">admin</a> / -->
+<!--                                    <a href="#">12</a> Comments-->
+<!--                                </div>-->
+<!--                                <p>Aliquet id lacinia ultricies odio, neque ipsum facilisis parturient.  -->
+<!--                                Erat tristique nonummy etiam, fusce est porttitor.</p>-->
+<!--                                <a class="read-more-btn" href="blog-details-right-sidebar.html">-->
+<!--                                    Read More -->
+<!--                                    <i class="icofont-swoosh-right"></i>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--    -->
+<!--                    <div class="col-md-12 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay=".5s"> -->
+<!--                        <div class="single-blog-post sm-one-col">-->
+<!--                            <div class="blog-img">-->
+<!--                                <a href="blog-details-right-sidebar.html">-->
+<!--                                    <img src="{% static 'landing/img/blog/2.jpg' %}" alt="Blog Post Image">-->
+<!--                                </a>-->
+<!--                                <div class="blog-date">20 Sep, 2021</div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="blog-info">-->
+<!--                                <h6 class="blog-title">-->
+<!--                                    <a href="blog-details-right-sidebar.html">Awesome app</a>-->
+<!--                                </h6>-->
+<!--                                <div class="post-admin">-->
+<!--                                    By <a href="#">admin</a> / -->
+<!--                                    <a href="#">12</a> Comments-->
+<!--                                </div>-->
+<!--                                <p>Aliquet id lacinia ultricies odio, neque ipsum facilisis parturient.  -->
+<!--                                Erat tristique nonummy etiam, fusce est porttitor.</p>-->
+<!--                                <a class="read-more-btn" href="blog-details-right-sidebar.html">-->
+<!--                                    Read More -->
+<!--                                    <i class="icofont-swoosh-right"></i>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    -->
+<!--                    <div class="col-md-12 col-lg-4 wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> -->
+<!--                        <div class="single-blog-post sm-one-col">-->
+<!--                            <div class="blog-img">-->
+<!--                                <a href="blog-details-right-sidebar.html">-->
+<!--                                    <img src="{% static 'landing/img/blog/3.jpg' %}" alt="Blog Post Image">-->
+<!--                                </a>-->
+<!--                                <div class="blog-date">20 Sep, 2021</div>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                            <div class="blog-info">-->
+<!--                                <h6 class="blog-title">-->
+<!--                                    <a href="blog-details-right-sidebar.html">Awesome app landing page</a>-->
+<!--                                </h6>-->
+<!--                                <div class="post-admin">-->
+<!--                                    By <a href="#">admin</a> / -->
+<!--                                    <a href="#">12</a> Comments-->
+<!--                                </div>-->
+<!--                                <p>Aliquet id lacinia ultricies odio, neque ipsum facilisis parturient.  -->
+<!--                                Erat tristique nonummy etiam, fusce est porttitor.</p>-->
+<!--                                <a class="read-more-btn" href="blog-details-right-sidebar.html">-->
+<!--                                    Read More -->
+<!--                                    <i class="icofont-swoosh-right"></i>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+            </div><!-- END CONTAINER -->
+        </section>
+        <!-- END BLOG SECTION -->
+
+        <!-- START CONTACT SECTION -->
+        <section id="contact" class="contact-section gray-bg angle-contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
+                            <h2>Ponte en contacto</h2>
+                            <p>Ponte en contacto y registrá tu veterinaria.</p>
+                        </div>
+                    </div><!-- END COL -->
+                </div><!-- END ROW -->
+
+                <div class="row">
+<!--                    <div class="col-md-4 col-lg-4">-->
+<!--                        <div class="single-contact-info wow animate__animated animate__fadeInUp" data-wow-delay=".4s">-->
+<!--                            <i class="icofont-location-pin"></i>-->
+<!--                            <h3>Office Address:</h3>-->
+<!--                            <p>2750 Quadra Street Victoria, Canada.</p>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+                    <a
+                        href="mailto:admin@vetesoft.com.py?subject=Quiero%20registrar%20mi%20veterinaria&body=Buenas%20me%20gustaria%20suscribir%20mi%20veterinaria%20a%20Vetesoft"
+                        target="_blank"
+                        class="col-md-6 col-lg-6"
+                    >
+                        <div>
+                            <div class="single-contact-info wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
+                                <i class="icofont-envelope"></i>
+                                <h3>Correo:</h3>
+                                <p>admin@vetesoft.com.py</p>
+                            </div>
+                        </div><!-- END COL -->
+                    </a>
+                    <a
+                        href="https://wa.me/595986747136?text=Hola%2C%20estoy%20interesado%2Fa%20en%20suscribirme%20a%20Vetesoft"
+                        target="_blank"
+                        class="col-md-6 col-lg-6"
+                    >
+                        <div>
+                            <div class="single-contact-info wow animate__animated animate__fadeInUp" data-wow-delay=".6s">
+                                <i class="icofont icofont-phone"></i>
+                                <h3>Teléfono/Whatsapp:</h3>
+                                <p>+595986747136</p>
+                            </div>
+                        </div><!-- END COL -->
+                    </a>
+                </div>
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12 col-lg-12">-->
+<!--                        <div class="contact-form wow animate__animated animate__fadeInUp" data-wow-delay=".9s">-->
+<!--                            <form id="contactForm">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-lg-6">-->
+<!--                                        <div class="form-group">-->
+<!--                                            <label>Name</label>-->
+<!--                                            <input type="text" class="form-control" required data-error="Please enter your name" placeholder="Your Name" />-->
+<!--                                            <div class="help-block with-errors"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-lg-6">-->
+<!--                                        <div class="form-group">-->
+<!--                                            <label>E-mail</label>-->
+<!--                                            <input type="email" class="form-control" required data-error="Please enter your email" placeholder="Email Address" />-->
+<!--                                            <div class="help-block with-errors"></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                <div class="form-group">-->
+<!--                                    <label>Subject</label>-->
+<!--                                    <input type="text" class="form-control" required data-error="Please enter your subject" placeholder="Your subject" />-->
+<!--                                    <div class="help-block with-errors"></div>-->
+<!--                                </div>-->
+
+<!--                                <div class="form-group">-->
+<!--                                    <label>Message</label>-->
+<!--                                    <textarea class="form-control" id="message" rows="6" required data-error="Write your message" placeholder="Enter your message here..."></textarea>-->
+<!--                                    <div class="help-block with-errors"></div>-->
+<!--                                </div>-->
+
+<!--                                <div class="text-center">-->
+<!--                                    <button type="submit" class="default-button">-->
+<!--                                        Send Message-->
+<!--                                        <i class="icofont-arrow-right"></i>-->
+<!--                                    </button>-->
+<!--                                    <div id="msgSubmit" class="h3 text-center hidden"></div>-->
+<!--                                    <div class="clearfix"></div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+            </div><!-- END CONTAINER -->
+        </section>
+        <!-- END CONTACT SECTION-->
+
+        <!-- START FOOTER AREA -->
+        <footer id="footer">
+<!--            <div class="footer-top">-->
+<!--                <div class="container">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-12">-->
+<!--                            <div class="subscribe-text">-->
+<!--                                <h3>Subscribe for our Newsletter</h3>-->
+<!--                                <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore Lorem ipsum madolor sit amet, consectetur adipisicing incididunt.</p>-->
+<!--                            </div>-->
+
+<!--                            <div class="subscribe-form">-->
+<!--                                <form class="newsletter-form" data-bs-toggle="validator">-->
+<!--                                    <input type="email" class="form-control" placeholder="Enter your email address" name="EMAIL" required autocomplete="off">-->
+<!--                                    <button type="submit" class="btn subscribe-btn">-->
+<!--                                        <i class="icofont-paper-plane"></i>-->
+<!--                                    </button>-->
+<!--                                    <div id="validator-newsletter" class="form-result"></div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>&lt;!&ndash; END COL &ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; END ROW &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; END CONTAINER &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; END FOOTER TOP &ndash;&gt;-->
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <p class="copyright">Copyright @Vetesoft PY. Todos los derechos reservados</p>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="social-links">
+                                <li>Siguenos :</li>
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icofont-facebook"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icofont-twitter"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icofont-google-plus"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+                                <li>
+                                    <a href="https://www.instagram.com/vetesoft.com.py/">
+                                        <i class="icofont-instagram"></i>
+                                    </a>
+                                </li>
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="icofont-pinterest"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+                            </ul>
+                        </div>
+                    </div><!-- END ROW -->
+                </div><!-- END CONTAINER -->
+            </div><!-- END FOOTER BOTTOM -->
+        </footer>
+        <!-- END FOOTER AREA -->
+ 
+        <!-- Link of JS files -->
+        <script src="{% static 'landing/js/jquery.min.js' %}"></script>
+        <script src="{% static 'landing/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'landing/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'landing/js/magnific-popup.min.js' %}"></script>
+        <script src="{% static 'landing/js/particleground.min.js' %}"></script>
+        <script src="{% static 'landing/js/wow.min.js' %}"></script>
+        <script src="{% static 'landing/js/ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'landing/js/form-validator.min.js' %}"></script>
+        <script src="{% static 'landing/js/contact-form-script.js' %}"></script>
+        <script src="{% static 'landing/js/mixitup.min.js' %}"></script>
+        <script src="{% static 'landing/js/jquery-ui.js' %}"></script>
+        <script src="{% static 'landing/js/slick.min.js' %}"></script>
+        <script src="{% static 'landing/js/custom.js' %}"></script>
+    </body>
+</html>

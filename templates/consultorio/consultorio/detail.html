@@ -1,0 +1,94 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Mi consultorio {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page">Mi consultorio</li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible text-white" role="alert">
+            <span class="text-sm">{{message}}</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissible text-white" role="alert">
+            <span class="text-sm">Ocurrió un error  al guardar</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-1 z-index-2">
+                    <div class="row bg-primary shadow-dark border-radius-lg pt-4 pb-3">
+                        <div class="col-9">
+                            <h6 class="text-white text-capitalize ps-3">Mi consultorio</h6>
+                        </div>
+                        <div class="col-3">
+                            {% if user.groups.all.0.name == "Administrador" %}
+                            <a href="{% url 'consultorio-edit' %}" class="btn btn-light">
+                            <i class="material-icons">edit</i>
+                            </a>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="row">
+                                    <strong>Nombre:</strong>
+                                    <p>{{ consultorio.nombre }}</p>
+                                </div>
+                                {% if consultorio.ruc %}
+                                    <strong>RUC:</strong>
+                                    <p>{{ consultorio.ruc }}</p>
+                                {% endif %}
+                                {% if consultorio.email %}
+                                    <strong>Email:</strong>
+                                    <p>{{ consultorio.email }}</p>
+                                {% endif %}
+                                {% if consultorio.direccion %}
+                                    <strong>Dirección:</strong>
+                                    <p>{{ consultorio.direccion }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="row">
+                                    <strong>Ubicación maps:</strong>
+                                    {% if consultorio.ubicacion %}
+                                        <a class="link-primary" href="{{consultorio.ubicacion}}" target="_blank">Ubicaci&oacute;n</a>
+                                    {% endif %}
+                                </div>
+                                {% if consultorio.telefono %}
+                                    <strong>Número de teléfono:</strong>
+                                    <p>{{ consultorio.telefono }}</p>
+                                {% endif %}
+                                {% if consultorio.telefono_urgencia %}
+                                    <strong>Teléfono urgencia:</strong>
+                                    <p>{{ consultorio.telefono_urgencia }}</p>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'includes/custom-footer.html' %}
+</div>
+{% endblock content %}

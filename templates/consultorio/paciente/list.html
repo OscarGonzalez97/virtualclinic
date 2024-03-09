@@ -1,0 +1,82 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Pacientes {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page">Pacientes</li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible text-white" role="alert">
+            <span class="text-sm">{{message}}</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissible text-white" role="alert">
+            <span class="text-sm">Ocurrió un error  al guardar</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+       {% endif %}
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-1 z-index-2">
+                    <div class="row bg-primary shadow-dark border-radius-lg pt-4 pb-3">
+                        <div class="col-9">
+                            <h6 class="text-white text-capitalize ps-3">Pacientes</h6>
+                        </div>
+                        <div class="col-3">
+                            <a href="{% url 'paciente-create' %}" class="btn btn-light">
+                            <i class="material-icons">add</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-2 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Nro. telefono</th>
+                                    <th>Nro. documento</th>
+                                    <th>Sexo</th>
+                                    <th>Fecha nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paciente in pacientes %}
+                                <tr>
+                                    <td>{{ paciente.nombre_completo }}</td>
+                                    <td>{{ paciente.nro_telefono|default:"-" }}</td>
+                                    <td>{{ paciente.nro_documento|default:"-" }}</td>
+                                    <td>{{ paciente.get_sexo_display }}</td>
+                                    <td>{{ paciente.fecha_nacimiento|default:"-" }}</td>
+                                    <td>
+                                        <a title="Detalle" href="{% url 'paciente' paciente.pk %}" class="btn btn-primary"><i class="material-icons">visibility</i></a>
+                                        <a title="Editar" href="{% url 'paciente-edit' paciente.pk %}" class="btn btn-info"><i class="material-icons">edit</i></a>
+                                        {% if user.groups.all.0.name == "Administrador" %}<a title="Crear usuario" href="#" class="btn btn-success"><i class="material-icons">person_add</i></a>{%endif%}
+                                        {% if user.groups.all.0.name == "Administrador" %}<a title="Borrar" href="{% url 'paciente-delete' paciente.pk %}" class="btn btn-danger"><i class="material-icons">delete</i></a>{%endif%}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'includes/custom-footer.html' %}
+</div>
+{% endblock content %}

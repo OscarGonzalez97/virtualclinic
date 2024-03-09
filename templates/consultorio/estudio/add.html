@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {% if object %}
+        Editar Estudio
+    {% else %}
+        Agregar Estudio
+    {% endif %}
+{% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'estudio' %}">Estudios</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page"> {% if object %} Editar {% else %}  Agregar {% endif %} Estudio </li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-primary py-3">
+                    <h6 class="text-white text-uppercase m-0">
+                        {% if object %}
+                            Editar Estudio
+                        {% else %}
+                            Agregar Estudio
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="row g-3" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                {{ field.label_tag }}
+                                {{ field|add_class:"form-control border px-3 py-2" }}
+                            </div>
+                            <span class="text-danger">{{ field.errors }}</span>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                {% if object %}
+                                    Guardar
+                                {% else %}
+                                    Agregar Estudio
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

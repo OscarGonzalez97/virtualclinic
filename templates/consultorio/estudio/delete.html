@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Confirmar Eliminación {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'estudio' %}">Estudios</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page"> Eliminar Estudio </li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-danger py-3">
+                    <h6 class="text-white text-uppercase m-0">Confirmar Eliminación</h6>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ confirm_delete_form.estudio_id }}
+                        <p>¿Estás seguro de que deseas eliminar el Estudio del {{ object.fecha }}?</p>
+                        <p>Información del Estudio:</p>
+                        <ul>
+                            <li>Fecha: {{ object.fecha }}</li>
+                            <li>Próxima consulta: {{ object.proxima_consulta|default:"-" }}</li>
+                            {% if object.resultado %}
+                            <li>Resultado: <a target="_blank" href="{{ object.resultado.url}}">{{ object.resultado|default:"-" }}</a></li>
+                            {% endif %}
+                            <li>Tipo estudio: {{ object.tipo_estudio }}</li>
+                            <li>Laboratorio: {{ object.laboratorio|default:"-" }}</li>
+                        </ul>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="{% url 'estudio'%}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

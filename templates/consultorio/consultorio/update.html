@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Editar Consultorio
+{% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'consultorio' %}">Mi consultorio</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page"> Editar Consultorio </li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-primary py-3">
+                    <h6 class="text-white text-uppercase m-0">
+                        Editar Consultorio
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="row g-3" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                {{ field.label_tag }}
+                                {{ field|add_class:"form-control border px-3 py-2" }}
+                            </div>
+                            <span class="text-danger">{{ field.errors }}</span>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var labels = document.getElementsByTagName("label");
+        for (var i = 0; i < labels.length; i++) {
+            if(["Consultorio:"].includes(labels[i].innerHTML)){
+                labels[i].classList.add("visually-hidden");
+            }
+        }
+    });
+</script>
+{% endblock content %}
+
+

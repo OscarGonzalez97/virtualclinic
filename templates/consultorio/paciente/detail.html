@@ -1,0 +1,73 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}
+    Detalle de Paciente - {{ paciente.nombre_completo }}
+{% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'pacientes' %}">Pacientes</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page">{{ paciente.nombre_completo }}</li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-primary py-3">
+                    <div class="row bg-primary border-radius-lg">
+                        <div class="col-9">
+                            <h6 class="text-white text-capitalize ps-3">Detalle de Paciente - {{ paciente.nombre_completo }}</h6>
+                        </div>
+                        <div class="col-3">
+                            <a href="{% url 'paciente-edit' paciente.pk %}" class="btn btn-light">
+                            <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4>Información del Paciente</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Nombre:</strong> {{ paciente.nombre_completo }}</p>
+                            <p><strong>Nro. telefono:</strong> {{ paciente.nro_telefono|default:"-" }}</p>
+                            <p><strong>Nro. documento:</strong> {{ paciente.nro_documento|default:"-" }}</p>
+                            <p><strong>Sexo:</strong> {{ paciente.get_sexo_display }}</p>
+                            <p><strong>Fecha de nacimiento:</strong> {{ paciente.fecha_nacimiento|default:"-" }}</p>
+                        </div>
+                        <div class="w-100 d-md-none mt-3"></div>
+                        <div class="d-grid col-6 mx-auto">
+                            <a href="{% url 'paciente-consultas' paciente.pk %}" class="btn btn-outline-primary align-self-center" role="button">Consultas <i class="material-icons">medical_services</i></a>
+                            <a href="{% url 'paciente-estudio' paciente.pk %}" class="btn btn-outline-primary align-self-center" role="button">Estudios <i class="material-icons">science</i></a>
+                        </div>
+                    </div>
+                    {%if consultas%}
+                    <div class="row">
+                        <div class="accordion" id="accordionExample1">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header bg-light border p-2" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Resumen de consultas
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+                              <div class="accordion-body overflow-auto px-2" style="max-height: 200px;">
+                                  {%for consulta in consultas %}
+                                    <strong class="text-dark">{{consulta.fecha}}</strong>
+                                    <p class="text-dark">{{consulta.observacion}}</p>
+                                  {%endfor%}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends "layouts/base-cliente.html" %}
+{% load static %}
+
+{% block title %} Estudios {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'dashboard-cliente' %}">Estudios</a></li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible text-white" role="alert">
+            <span class="text-sm">{{message}}</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissible text-white" role="alert">
+            <span class="text-sm">Ocurrió un error  al guardar</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-1 z-index-2">
+                    <div class="row bg-primary shadow-dark border-radius-lg pt-4 pb-3">
+                        <div class="col-9">
+                            <h6 class="text-white text-capitalize ps-3">Estudios</h6>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-2 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Próxima consulta</th>
+                                    <th>Resultado</th>
+                                    <th>Tipo estudio</th>
+                                    <th>Laboratorio</th>
+                                    <th>Creado por</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for analisis in analisis %}
+                                <tr>
+                                    <td>{{ analisis.fecha }}</td>
+                                    {% if analisis.proxima_consulta == None %}
+                                    <td>-</td>
+                                    {% else %}
+                                    <td>{{ analisis.proxima_consulta }}</td>
+                                    {% endif %}
+                                    {% if analisis.resultado == "" %}
+                                    <td>-</td>
+                                    {% else %}
+                                    <td><a target="_blank" href="{{ analisis.resultado.url }}">{{ analisis.resultado }}</a></td>
+                                    {% endif %}
+                                    <td>{{ analisis.tipo_analisis }}</td>
+                                    {% if analisis.laboratorio == None %}
+                                    <td>-</td>
+                                    {% else %}
+                                    <td>{{ analisis.laboratorio }}</td>
+                                    {% endif %}
+                                    <td>{{ analisis.creado_por|default:"-" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'includes/custom-footer.html' %}
+</div>
+{% endblock content %}

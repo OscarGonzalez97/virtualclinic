@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Confirmar Eliminación {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'tipoestudio' %}">Tipos Estudios</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page"> Eliminar Tipo Estudio </li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible text-white" role="alert">
+            <span class="text-sm">{{message}}</span>
+            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-danger py-3">
+                    <h6 class="text-white text-uppercase m-0">Confirmar Eliminación</h6>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ confirm_delete_form.tipoestudio_id }}
+                        <p>¿Estás seguro de que deseas eliminar el Tipo Estudio {{ object.tipo }}?</p>
+                        <p>Información del Tipo Estudio:</p>
+                        <ul>
+                            <li>Tipo Estudio: {{ object.tipo }}</li>
+                        </ul>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="{% url 'tipoestudio'%}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
