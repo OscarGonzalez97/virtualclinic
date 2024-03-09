@@ -647,6 +647,19 @@ class PacienteConsultaCreate(PermissionRequiredMixin, PacienteConsultaCreateOrUp
         return context
 
 
+class PacienteConsultaDetail(PermissionRequiredMixin, DetailView):
+    permission_required = 'consultorio.view_consulta'
+    model = Consulta
+    template_name = 'consultorio/paciente/consulta/detail.html'
+    context_object_name = 'consulta'
+    pk_url_kwarg = 'consulta_id'
+
+    def get_context_data(self, **kwargs):
+        context = super(PacienteConsultaDetail, self).get_context_data()
+        context['paciente'] = get_paciente(self)
+        return context
+
+
 class PacienteConsultaUpdate(PermissionRequiredMixin, PacienteConsultaCreateOrUpdateMixin, SuccessMessageMixin,
                              UpdateMixin, UpdateView):
     permission_required = ('consultorio.view_paciente', 'consultorio.change_consulta')

@@ -68,6 +68,7 @@ urlpatterns = [
                 path('', views.PacienteConsultaList.as_view(), name='paciente-consultas'),
                 path('create/', views.PacienteConsultaCreate.as_view(), name='paciente-consulta-create'),
                 path('<int:consulta_id>/', include([
+                    path('', views.PacienteConsultaDetail.as_view(), name='paciente-consulta'),
                     path('edit/', views.PacienteConsultaUpdate.as_view(), name='paciente-consulta-edit'),
                     path('delete/', views.PacienteConsultaDelete.as_view(), name='paciente-consulta-delete'),
                 ])),

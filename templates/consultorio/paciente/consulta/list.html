@@ -77,6 +77,7 @@
                                     {% endif %}
                                     <td>{{ consulta.creado_por|default:"-" }}</td>
                                     <td>
+                                        <a title="Detalle" href="{% url 'paciente-consulta' paciente.pk consulta.pk %}" class="btn btn-primary"><i class="material-icons">visibility</i></a>
                                         <a title="Editar" href="{% url 'paciente-consulta-edit' paciente.pk consulta.pk %}" class="btn btn-info"><i class="material-icons">edit</i></a>
                                         <a title="Eliminar" href="{% url 'paciente-consulta-delete' paciente.pk consulta.pk %}" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                     </td>

@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Consulta {{consulta.fecha}} {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'pacientes' %}">Pacientes</a></li>
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'paciente' paciente.pk %}">{{ paciente.nombre_completo }}</a></li>
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'paciente-consultas' paciente.pk %}">Consultas Paciente</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page">Consulta {{consulta.fecha}}</li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+      <div class="row">
+          <div class="col-md-8 mx-auto">
+              <div class="card my-4">
+                  <div class="card-header bg-primary py-3">
+                      <div class="row bg-primary border-radius-lg">
+                          <div class="col-9">
+                              <h6 class="text-white text-capitalize ps-3">Consulta {{ consulta.fecha }}</h6>
+                          </div>
+                          <div class="col-3">
+                              <a href="{% url 'paciente-consulta-edit' paciente.pk consulta.pk %}" class="btn btn-light">
+                              <i class="material-icons">edit</i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <h4>Información de la Consulta</h4>
+                      <div class="row">
+                          <div class="col-6">
+                              <p><strong>Fecha:</strong> {{ consulta.fecha }}</p>
+                              <p><strong>Prox. consulta:</strong> {{ consulta.proxima_consulta|default:"-" }}</p>
+                              <p><strong>Receta:</strong></p>
+                              {% if consulta.receta_foto %}
+                              <img src="{{ consulta.receta_foto.url }}" alt="Foto receta" width="100">
+                              {% else %}
+                              <span class="material-icons">no_photography</span>
+                              {% endif %}
+                              <p><strong>Creado por:</strong> {{ consulta.creado_por|default:"-" }}</p>
+                          </div>
+                          <div class="col-6">
+                            <p><strong>Obervación:</strong></p>
+                            <p> {{ consulta.observacion|default:"-" }}</p>
+                          </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="list-group">
+                        {% for archivo in consulta.archivos.all %}
+                          <a href="{{archivo.archivo.url}}" target="_blank" class="list-group-item list-group-item-action">{{archivo}}</a>
+                        {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+</div>
+    {% include 'includes/custom-footer.html' %}
+</div>
+{% endblock content %}
