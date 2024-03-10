@@ -342,7 +342,7 @@ class UsuarioPacienteCreate(PermissionRequiredMixin, SuccessMessageMixin, Create
     def form_invalid(self, form):
         if form.errors:
             messages.error(self.request, 'El username ya existe')
-            return super().form_invalid(form)
+            return redirect('pacientes')
         return super().form_invalid(form)
 
     def form_valid(self, form):
