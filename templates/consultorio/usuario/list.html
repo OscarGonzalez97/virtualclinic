@@ -67,7 +67,9 @@
                                     <td>{{ usuario.direccion|default:"-" }}</td>
                                     <td>{{ usuario.groups.first.name|default:"-" }}</td>
                                     <td>
+                                        {% if not usuario.groups.first.name == 'Cliente' %}
                                         <a href="{% url 'usuarioconsultorio-edit' usuario.pk %}" class="btn btn-info"><i class="material-icons">edit</i></a>
+                                        {% endif %}
                                         <a href="{% url 'usuarioconsultorio-delete' usuario.pk %}" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                     </td>
                                 </tr>
