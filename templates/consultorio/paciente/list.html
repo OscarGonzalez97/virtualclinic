@@ -51,7 +51,7 @@
                                     <th>Nro. telefono</th>
                                     <th>Nro. documento</th>
                                     <th>Sexo</th>
-                                    <th>Fecha nacimiento</th>
+                                    <th>Email</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                     <td>{{ paciente.nro_telefono|default:"-" }}</td>
                                     <td>{{ paciente.nro_documento|default:"-" }}</td>
                                     <td>{{ paciente.get_sexo_display }}</td>
-                                    <td>{{ paciente.fecha_nacimiento|default:"-" }}</td>
+                                    <td>{{ paciente.email|default:"-" }}</td>
                                     <td>
                                         <a title="Detalle" href="{% url 'paciente' paciente.pk %}" class="btn btn-primary"><i class="material-icons">visibility</i></a>
                                         <a title="Editar" href="{% url 'paciente-edit' paciente.pk %}" class="btn btn-info"><i class="material-icons">edit</i></a>
