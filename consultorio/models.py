@@ -29,7 +29,7 @@ class Paciente(models.Model):
     email = models.EmailField('Email', blank=True, null=True)
     consultorio = models.ForeignKey(Consultorio, related_name='pacientes', null=True, blank=True,
                                     on_delete=models.SET_NULL)
-    usuario = models.OneToOneField(Usuario, related_name='usuario', null=True, blank=True, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(Usuario, related_name='usuario', null=True, blank=True, on_delete=models.SET_NULL)
     nro_documento = models.CharField('Número de documento', max_length=80, null=True, blank=True)
 
     def __str__(self):
