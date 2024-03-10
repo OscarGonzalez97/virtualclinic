@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- SITE TITLE -->
-        <title>Vetesoft</title>
+        <title>Virtualclinic</title>
         <!-- Fonts -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
         <!-- Link of CSS files -->
@@ -58,8 +58,8 @@
         <!-- START NAVBAR -->
         <nav class="navbar fixed-top navbar-expand-md navbar-light top-menu">
             <div class="container">
-                <a class="navbar-brand" href="vetesoft.com.py">
-                    Vetesoft PY
+                <a class="navbar-brand" href="virtualclinic.com.py">
+                    Virtualclinic
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@
 <!--                            <a href="#contact" class="nav-link">Contact</a>-->
 <!--                        </li>-->
                         <li class="nav-item">
-                            <a href="#contact" class="nav-link">Registrarse</a>
+                            <a href="{% url 'user_register' %}" class="nav-link">Registrarse</a>
                         </li>
                     </ul>
                 </div>
@@ -111,8 +111,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12 col-lg-7">
                                         <div class="slider-text">
-                                            <h1>Maneja toda tu veterinaria utilizando Vetesoft</h1>
-                                            <p>Vetesoft es tu aliado integral en la gestión eficiente de tu veterinaria. Con nuestro potente software especializado, simplificamos el día a día de los profesionales y administradores, permitiéndoles concentrarse en lo que más importa: el cuidado de los animales.</p>
+                                            <h1>Manejá tu consultorio utilizando Virtualclinic</h1>
+                                            <p>Virtualclinic es tu aliado integral en la gestión eficiente de tu consultorio. Con nuestro potente software especializado, simplificamos el día a día de los profesionales, permitiéndoles concentrarse en lo que más importa: el cuidado de sus pacientes.</p>
                                             
                                             <div>
                                                 <a href="{% url 'user_register' %}" class="slide-btn-white mr-10">
@@ -126,7 +126,7 @@
                                     
                                     <div class="col-md-12 col-lg-5">
                                         <div class="welcome-phone">
-                                            <img src="{% static 'img/milo.png' %}" alt="Vetesoft PY Logo">
+                                            <img src="{% static 'img/milo.png' %}" alt="Virtualclinic PY Logo">
                                         </div>
                                     </div><!-- END COL -->
                                 </div><!-- END ROW -->
@@ -174,7 +174,7 @@
                     <div class="col-lg-12"> 
                         <div class="section-title angle-section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
                             <h2>Acerca de nuestro software</h2>
-                            <p>Nuestra herramienta revolucionaria para veterinarias. Gestiona pacientes, tratamientos y más con eficiencia y precisión. Transforma tu práctica hoy.</p>
+                            <p>Nuestra herramienta revolucionaria para consultorios. Gestiona pacientes, consultas y más con eficiencia y precisión. Transforma tu práctica hoy.</p>
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -183,8 +183,8 @@
                     <div class="col-lg-7"> 
                         <div class="app-about-text wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
                             <h3>Mejor Plataforma Web</h3>
-                            <p>Vetesoft redefine la gestión veterinaria a través de su innovadora aplicación web. Nuestra plataforma integral simplifica la administración de pacientes, consultas y tratamientos con una interfaz intuitiva y personalizable. Desde la creación de planes de vacunación personalizados hasta la gestión de usuarios, Vetesoft ofrece eficiencia y control completo, elevando la calidad del cuidado animal. Con actualizaciones regulares y un compromiso con la excelencia, somos la elección líder para profesionales que buscan la mejor experiencia en gestión veterinaria en línea. </p>
-                            <p>Descubre por qué Vetesoft es la aplicación web preferida para potenciar tu práctica veterinaria.</p>
+                            <p>Virtualclinic redefine la gestión de tu consultorio a través de su innovadora aplicación web. Nuestra plataforma integral simplifica registros de pacientes, consultas y estudios con una interfaz intuitiva. Olvidate de hojas e impresiones. Desde registro de historial clínico hasta la gestión de usuarios, Virtualclinic ofrece eficiencia y control completo, elevando la calidad de tus consultas. Con actualizaciones regulares y un compromiso con la excelencia, somos la elección líder para profesionales que buscan la mejor experiencia en gestión médica. </p>
+                            <p>Descubre por qué Virtualclinic es la aplicación web preferida para potenciar tu práctica médica.</p>
     
                             <ul> 
                                 <li><i class="icofont-verification-check"></i> Fácil de usar</li>
@@ -192,7 +192,7 @@
                                 <li><i class="icofont-verification-check"></i> Diseño increíble</li>
                             </ul>
                             
-                            <a href="veteadmin/login" class="default-button">
+                            <a href="virtualclinic/login" class="default-button">
                                 <i class="icofont-cloud-download"></i> 
                                 Probar aplicación
                             </a>
@@ -201,7 +201,7 @@
                     
                     <div class="col-lg-5"> 
                         <div class="text-center wow animate__animated animate__fadeInUp" data-wow-delay=".9s">
-                            <img src="{% static 'landing/img/app-about.jpg' %}" alt="App About">
+                            <img src="{% static 'landing/img/app-about.webp' %}" alt="App About">
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -216,7 +216,7 @@
                     <div class="col-lg-12"> 
                         <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
                             <h2>¿Cómo funciona?</h2>
-                            <p>Contáctanos para registrar tu veterinaria y comenzar a utilizar la aplicación. Si ya tienes un sistema, te ayudamos a importar/migrar tus datos. Simplifica tu gestión con Vetesoft.</p>
+                            <p>Registrate y comenzá a utilizar la aplicación. Si ya tienes un sistema, te ayudamos a importar/migrar tus datos. Simplifica tu gestión con Virtualclinic.</p>
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -233,13 +233,13 @@
                             <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".4s"> 
                                 <i class="icofont-test-tube-alt"></i>
                                 <h4>Testeado</h4>
-                                <p>Testeado por veterinarios y administradores para garantizar su usabilidad.</p>
+                                <p>Testeado por distintos tipos de profesionales para garantizar su usabilidad.</p>
                             </div>
                             
                             <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".6s"> 
                                 <i class="icofont-light-bulb"></i>
                                 <h4>Enfoque</h4>
-                                <p>Enfócate y gestiona con facilidad. Optimiza tus tareas para un control total y una gestión eficiente.</p>
+                                <p>Enfócate y gestioná con facilidad. Optimiza tus tareas para un control total y una gestión eficiente.</p>
                             </div>
 
                             <div class="single-hiw-feature wow animate__animated animate__fadeInUp" data-wow-delay=".6s">
@@ -547,7 +547,7 @@
                     <div class="col-lg-12"> 
                         <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
                             <h2>Precios</h2>
-                            <p>Actualmente contamos con un único plan promocional disponible a todos los que se <strong>registren hasta el 28/02/2024</strong></p>
+                            <p>Actualmente contamos con un único plan promocional disponible a todos los que se <strong>registren hasta el 30/04/2024</strong></p>
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -567,14 +567,14 @@
                             <ul class="price-list"> 
                                 <li>Módulo pacientes</li>
                                 <li>1 usuario administrativo</li>
-                                <li>20 usuarios veterinarios</li>
+                                <li>5 usuarios doctores</li>
                                 <li>Usuarios cliente ilimitados</li>
                                 <li>Espacio disponible para archivos 5GB</li>
                                 <li>Soporte</li>
                             </ul>
                             
                             <div class="price-footer">
-                                <a href="#" class="purchase-btn">Registrate</a>
+                                <a href="{% url 'user_register' %}" class="purchase-btn">Registrate</a>
                             </div>
                         </div><!-- END SINGLE PRICE PACKAGE -->
                     </div><!-- END COL -->
@@ -593,14 +593,14 @@
                             <ul class="price-list">
                                 <li>Módulo pacientes</li>
                                 <li>1 usuario administrativo</li>
-                                <li>20 usuarios veterinarios</li>
+                                <li>5 usuarios doctores</li>
                                 <li>Usuarios cliente ilimitados</li>
                                 <li>Espacio disponible para archivos 5GB</li>
                                 <li>Soporte</li>
                             </ul>
 
                             <div class="price-footer">
-                                <a href="#" class="purchase-btn">Registrate</a>
+                                <a href="{% url 'user_register' %}" class="purchase-btn">Registrate</a>
                             </div>
                         </div><!-- END SINGLE PRICE PACKAGE -->
                     </div><!-- END COL -->
@@ -619,14 +619,14 @@
                             <ul class="price-list">
                                 <li>Módulo pacientes</li>
                                 <li>1 usuario administrativo</li>
-                                <li>20 usuarios veterinarios</li>
+                                <li>5 usuarios doctores</li>
                                 <li>Usuarios cliente ilimitados</li>
                                 <li>Espacio disponible para archivos 5GB</li>
                                 <li>Soporte</li>
                             </ul>
 
                             <div class="price-footer">
-                                <a href="#" class="purchase-btn">Registrate</a>
+                                <a href="{% url 'user_register' %}" class="purchase-btn">Registrate</a>
                             </div>
                         </div><!-- END SINGLE PRICE PACKAGE -->
                     </div><!-- END COL -->
@@ -835,7 +835,7 @@
                     <div class="col-lg-12"> 
                         <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s"> 
                             <h2>Disponible ahora</h2>
-                            <p>Regístrate ahora en Vetesoft: la mejor herramienta web para la gestión veterinaria. Potencia tu práctica con eficiencia y control.</p>
+                            <p>Regístrate ahora en Virtualclinic: la mejor herramienta web para la gestión médica. Potencia tu práctica con eficiencia y control.</p>
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -848,7 +848,7 @@
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6 section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                        <img src="{% static 'landing/img/gato.jpg' %}" class="img-fluid" alt="gato en veterinaria">
+                        <img src="{% static 'landing/img/paciente.webp' %}" class="img-fluid" alt="paciente en consultorio">
                     </div><!-- END COL -->
                     <div class="col-lg-3"></div>
                 </div><!-- END ROW -->
@@ -960,7 +960,7 @@
                     <div class="col-lg-12">
                         <div class="section-title wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
                             <h2>Ponte en contacto</h2>
-                            <p>Ponte en contacto y registrá tu veterinaria.</p>
+                            <p>Registrá tu consultorio.</p>
                         </div>
                     </div><!-- END COL -->
                 </div><!-- END ROW -->
@@ -974,7 +974,7 @@
 <!--                        </div>-->
 <!--                    </div>&lt;!&ndash; END COL &ndash;&gt;-->
                     <a
-                        href="mailto:admin@vetesoft.com.py?subject=Quiero%20registrar%20mi%20veterinaria&body=Buenas%20me%20gustaria%20suscribir%20mi%20veterinaria%20a%20Vetesoft"
+                        href="mailto:admin@vetesoft.com.py?subject=Quiero%20registrar%20mi%20consultorio&body=Buenas%20me%20gustaria%20suscribir%20mi%20consultorio%20a%20Virtualclinic"
                         target="_blank"
                         class="col-md-6 col-lg-6"
                     >
@@ -982,12 +982,12 @@
                             <div class="single-contact-info wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
                                 <i class="icofont-envelope"></i>
                                 <h3>Correo:</h3>
-                                <p>admin@vetesoft.com.py</p>
+                                <p>admin@virtualclinic.com.py</p>
                             </div>
                         </div><!-- END COL -->
                     </a>
                     <a
-                        href="https://wa.me/595986747136?text=Hola%2C%20estoy%20interesado%2Fa%20en%20suscribirme%20a%20Vetesoft"
+                        href="https://wa.me/595986747136?text=Hola%2C%20estoy%20interesado%2Fa%20en%20suscribirme%20a%20Virtualclinic"
                         target="_blank"
                         class="col-md-6 col-lg-6"
                     >
@@ -1080,7 +1080,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
-                            <p class="copyright">Copyright @Vetesoft PY. Todos los derechos reservados</p>
+                            <p class="copyright">Copyright @Virtualclinic. Todos los derechos reservados</p>
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <ul class="social-links">
@@ -1101,7 +1101,7 @@
 <!--                                    </a>-->
 <!--                                </li>-->
                                 <li>
-                                    <a href="https://www.instagram.com/vetesoft.com.py/">
+                                    <a href="https://www.instagram.com/virtualclinic.com.py/">
                                         <i class="icofont-instagram"></i>
                                     </a>
                                 </li>
