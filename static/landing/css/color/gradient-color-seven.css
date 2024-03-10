@@ -320,189 +320,189 @@
 
 .faq-content .faq-title.active {
   background: #5FBAFF;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .accordion__item.active .accordion-header {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-member .overlay {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .app-download-section::after {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-blog-post .blog-date {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-blog-post .blog-title a:hover {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .single-blog-post .post-admin a {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .single-blog-post:hover .read-more-btn {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .single-blog-post-two .blog-title a:hover {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .single-blog-post-two .post_date {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-blog-img .single-blog-date {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .post-category .single-category:hover {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .blog-sidebar-title::before {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .comment-title::before {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .popular-tags a:hover {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .pagination-nav li a:hover {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .pagination-nav li.active a {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .top-banner-area::before {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-contact-info i {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .error-page-content {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .subscribe-form .subscribe-btn {
-  background: #37D97D;
-  background: -webkit-gradient(linear, left top, right top, from(#37D97D), to(#655CE6));
-  background: linear-gradient(to right, #37D97D, #655CE6);
+  background: #5FBAFF;
+  background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#655CE6));
+  background: linear-gradient(to right, #5FBAFF, #655CE6);
 }
 
 .single-user i {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .screenshot-carousel .owl-prev i,
 .screenshot-carousel-two .owl-prev i {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .screenshot-carousel .owl-next i,
 .screenshot-carousel-two .owl-next i {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .owl-dots .owl-dot.active span {
-  background: #37D97D !important;
+  background: #5FBAFF !important;
 }
 
 .testimonial-carousel .owl-dots .owl-dot.active span {
-  background: #37D97D !important;
+  background: #5FBAFF !important;
 }
 
 .single-post-admin a {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .post-tag-media .tag li a {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .post-social-media a:hover {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .search-box .search-btn {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .single-recent-post h5 a:hover {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .all-comments-content .comment .replay {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .comment-form .form-control:hover {
-  border-bottom: 1px solid #37D97D;
+  border-bottom: 1px solid #5FBAFF;
 }
 
 .contact-form .form-control:hover {
-  border-bottom: 1px solid #37D97D;
+  border-bottom: 1px solid #5FBAFF;
 }
 
 .contact-info ul li i {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .error-text .back-btn {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 
 .error-text .back-btn:hover {
-  background-color: #37D97D;
+  background-color: #5FBAFF;
 }
 
 .back-top-button i {
-  color: #37D97D;
+  color: #5FBAFF;
 }
 /*# sourceMappingURL=gradient-color-seven.css.map */
