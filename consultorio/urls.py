@@ -36,6 +36,7 @@ urlpatterns = [
         ), name="password-change-done"),
         path('', views.UsuarioList.as_view(), name='usuarios'),
         path('create/', views.UsuarioCreate.as_view(), name='usuarioconsultorio-create'),
+        path('create-paciente/', views.UsuarioPacienteCreate.as_view(), name='usuariopaciente-create'),
         path('<int:usuario_id>/', include([
             path('edit/', views.UsuarioUpdate.as_view(), name='usuarioconsultorio-edit'),
             path('delete/', views.UsuarioDelete.as_view(), name='usuarioconsultorio-delete'),

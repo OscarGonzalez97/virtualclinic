@@ -332,6 +332,55 @@ class UsuarioCreate(PermissionRequiredMixin, UsuarioCreateOrUpdateMixin, Success
         return super().form_valid(form)
 
 
+class UsuarioPacienteCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
+    permission_required = 'base.add_usuario'
+    model = Usuario
+    fields = ['first_name', 'last_name', 'nro_documento', 'nro_telefono', 'email', 'username']
+    success_message = "El usuario se ha guardado correctamente."
+    success_url = reverse_lazy('pacientes')
+
+    def form_invalid(self, form):
+        if form.errors:
+            messages.error(self.request, 'El username ya existe')
+            return super().form_invalid(form)
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.consultorio = self.request.user.consultorio
+        form.instance.tipo = 'paciente'
+        user = form.save()
+        paciente = Paciente.objects.get(pk=form.data['paciente_id'])
+        paciente.usuario = user
+        paciente.save()
+
+        grupo = Group.objects.filter(name='Cliente').first()
+        form.instance.groups.add(grupo)
+
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+        reset_url = reverse_lazy('password-reset-confirm', kwargs={'uidb64': uid, 'token': token})
+
+        # Enviar un correo electrónico con el enlace de restablecimiento de contraseña
+        html_content = render_to_string('consultorio/email_usuario.html', {'user': user, 'reset_url': reset_url})
+
+        # Crear el correo electrónico
+        subject = 'Bienvenido a Virtualclinic - Establecimiento de contraseña'
+        from_email = 'noreply@virtualclinic.com.py'
+        to_email = user.email
+
+        # Obtener el texto plano del contenido HTML
+        text_content = strip_tags(html_content)
+
+        # Crear el mensaje de correo electrónico
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+        msg.attach_alternative(html_content, "text/html")
+
+        # Enviar el correo electrónico
+        msg.send(fail_silently=False)
+
+        return super().form_valid(form)
+
+
 class UserRegisterView(SuccessMessageMixin, CreateView):
     model = Usuario
     form_class = UsuarioConsultorioRegisterForm
