@@ -6,12 +6,12 @@
             box-shadow: 0 0 5px #282828;
   }
   .top-menu .navbar-brand {
-    color: #6a11cb;
+    color: #5FBAFF;
     font-size: 20px;
     padding: 15px 15px;
   }
   .top-menu .navbar-brand:focus, .top-menu .navbar-brand:hover {
-    color: #6a11cb;
+    color: #5FBAFF;
   }
   .top-menu .navbar-toggler {
     border: none;
@@ -33,9 +33,9 @@
     padding-right: 15px;
   }
   .top-menu .navbar-nav .nav-item .nav-link::before {
-    background: #6a11cb;
-    background: -webkit-gradient(linear, left top, right top, from(#6a11cb), to(#2575fc));
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: #5FBAFF;
+    background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#2575fc));
+    background: linear-gradient(to right, #5FBAFF, #2575fc);
   }
   .top-menu .navbar-nav .nav-item .nav-link:focus, .top-menu .navbar-nav .nav-item .nav-link:hover {
     color: #000;
@@ -43,7 +43,7 @@
   .top-menu .navbar-nav .active > .nav-link,
   .top-menu .navbar-nav .active > .nav-link:focus,
   .top-menu .navbar-nav .active > .nav-link:hover {
-    color: #6a11cb;
+    color: #5FBAFF;
   }
   .top-menu .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(106, 17, 203, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -2940,9 +2940,9 @@
     margin-bottom: 30px;
   }
   .menu-3 .navbar-nav {
-    background: #6a11cb;
-    background: -webkit-gradient(linear, left top, right top, from(#6a11cb), to(#2575fc));
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: #5FBAFF;
+    background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#2575fc));
+    background: linear-gradient(to right, #5FBAFF, #2575fc);
     text-align: center;
     padding-bottom: 10px;
   }
@@ -3328,9 +3328,9 @@
   /*  IT SOLUTION LANDING PAGE START
     ===================================*/
   .menu-4 .navbar-nav {
-    background: #6a11cb;
-    background: -webkit-gradient(linear, left top, right top, from(#6a11cb), to(#2575fc));
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: #5FBAFF;
+    background: -webkit-gradient(linear, left top, right top, from(#5FBAFF), to(#2575fc));
+    background: linear-gradient(to right, #5FBAFF, #2575fc);
     text-align: center;
     padding-bottom: 10px;
   }
