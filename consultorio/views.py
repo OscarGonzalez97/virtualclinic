@@ -1,6 +1,7 @@
 from operator import itemgetter
 
 from admin_material.forms import LoginForm
+from django.db.models import Count
 from django.contrib import messages
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import user_passes_test
@@ -39,20 +40,49 @@ def dashboard_view(request):
     proximos_estudios = Estudio.objects.filter(proxima_consulta__gt=fecha_actual)
     consultorio = request.user.consultorio
 
+    hoy = timezone.localtime(timezone.now())
+    dia_semana = hoy.weekday()
+
+    # Calcular la fecha del lunes de esta semana
+    lunes_esta_semana = hoy - timezone.timedelta(days=dia_semana)
+
+    # Crear un diccionario para almacenar la cantidad de consultas por día de la semana
+    consultas_por_dia = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+        6: 0,
+        7: 0,
+    }
+
+    # Filtrar las consultas del consultorio del usuario para la semana actual
+    consultas_semana_actual = Consulta.objects.filter(
+        fecha__date__range=[lunes_esta_semana, lunes_esta_semana + timezone.timedelta(days=6)],
+        paciente__consultorio=request.user.consultorio
+    ).values('fecha__week_day').annotate(cantidad=Count('id'))
+
+    # Actualizar el diccionario con la cantidad de consultas por día
+    for consulta in consultas_semana_actual:
+        dia_semana = consulta['fecha__week_day']
+        cantidad_consultas = consulta['cantidad']
+        consultas_por_dia[dia_semana] = cantidad_consultas
+
     proximos_eventos = []
 
     for consulta in proximas_consultas:
         proximos_eventos.append({
             'fecha': consulta.proxima_consulta,
             'trabajo': 'Consulta',
-            'paciente': consulta.paciente.nombre,
+            'paciente': consulta.paciente.nombre_completo,
             'telefono': consulta.paciente.nro_telefono,
         })
     for estudio in proximos_estudios:
         proximos_eventos.append({
             'fecha': estudio.proxima_consulta,
             'trabajo': 'Estudio',
-            'paciente': estudio.paciente.nombre,
+            'paciente': estudio.paciente.nombre_completo,
             'telefono': estudio.paciente.nro_telefono,
         })
 
@@ -70,7 +100,8 @@ def dashboard_view(request):
         'usuarios': consultorio.usuarios.count(),
         'estudios': cantidad_estudios,
         'notificaciones': proximos_eventos,
-        'consultorio': consultorio
+        'consultorio': consultorio,
+        'semana': consultas_por_dia,
     }
     return render(request, 'consultorio/dashboard.html', context)
 

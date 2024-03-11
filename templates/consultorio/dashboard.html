@@ -81,11 +81,10 @@
             </div>
             <div class="card-body">
               <h6 class="mb-0 ">Consultas de la semana</h6>
-              <p class="text-sm ">3era semana de Setiembre</p>
               <hr class="dark horizontal">
               <div class="d-flex ">
                 <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> actualizado hace 2 horas </p>
+                <p class="mb-0 text-sm"> actualizado ahora </p>
               </div>
             </div>
           </div>
@@ -237,13 +236,13 @@
       data: {
         labels: ["L", "M", "M", "J", "V", "S", "D"],
         datasets: [{
-          label: "Sales",
+          label: "Consultas",
           tension: 0.4,
           borderWidth: 0,
           borderRadius: 4,
           borderSkipped: false,
           backgroundColor: "rgba(255, 255, 255, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
+          data: [{{semana.2}}, {{semana.3}}, {{semana.4}}, {{semana.5}}, {{semana.6}}, {{semana.7}}, {{semana.1}}],
           maxBarThickness: 6
         }, ],
       },
