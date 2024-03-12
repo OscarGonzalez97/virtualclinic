@@ -35,12 +35,30 @@ def is_doc_or_admin(user):
 @user_passes_test(is_doc_or_admin)
 def dashboard_view(request):
     cantidad_estudios = 0
-    fecha_actual = timezone.now().date()
+    fecha_actual = timezone.now()
     proximas_consultas = Consulta.objects.filter(proxima_consulta__gt=fecha_actual)
     proximos_estudios = Estudio.objects.filter(proxima_consulta__gt=fecha_actual)
     consultorio = request.user.consultorio
 
-    hoy = timezone.localtime(timezone.now())
+    # dashboard
+
+    # Obtener la fecha actual
+    mes_actual = fecha_actual.month
+
+    # Inicializar el diccionario para almacenar las consultas de cada mes
+    consultas_por_mes = {}
+    for mes in range(1, mes_actual + 1):
+        consultas = Consulta.objects.raw("SELECT consulta.id, COUNT(*) as cantidad from "
+                                         "'consultorio_consulta' AS consulta "
+                                         "INNER JOIN 'consultorio_paciente' as paciente "
+                                         "ON paciente.id = consulta.paciente_id "
+                                         "WHERE consulta.fecha "
+                                         "BETWEEN strftime('%Y-0" + str(mes) + "-01 00:00:00', DATETIME('now')) "
+                                         "AND strftime('%Y-0" + str(mes + 1) + "-01 00:00:00', DATETIME('now')) "
+                                         "AND  paciente.consultorio_id=" + str(request.user.consultorio.id) + ";")[0].cantidad
+        consultas_por_mes[mes] = consultas
+
+    hoy = timezone.localtime(fecha_actual)
     dia_semana = hoy.weekday()
 
     # Calcular la fecha del lunes de esta semana
@@ -68,6 +86,8 @@ def dashboard_view(request):
         dia_semana = consulta['fecha__week_day']
         cantidad_consultas = consulta['cantidad']
         consultas_por_dia[dia_semana] = cantidad_consultas
+
+    # fin dashboard
 
     proximos_eventos = []
 
@@ -102,6 +122,8 @@ def dashboard_view(request):
         'notificaciones': proximos_eventos,
         'consultorio': consultorio,
         'semana': consultas_por_dia,
+        'mes_actual': mes_actual,
+        'consultas_mes': consultas_por_mes
     }
     return render(request, 'consultorio/dashboard.html', context)
 
