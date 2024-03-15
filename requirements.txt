@@ -1,5 +1,5 @@
 Django==4.2.11
-Pillow==10.0.0
+Pillow==10.2.0
 gunicorn==20.1.0
 psycopg2-binary==2.9.6
 djangorestframework==3.14.0
@@ -7,3 +7,4 @@ Markdown==3.4.3
 drf-yasg==1.21.5
 django-widget-tweaks==1.5.0
 django-admin-material-dashboard==1.0.10
+django-appointment==3.3.3

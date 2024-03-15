@@ -44,12 +44,26 @@ INSTALLED_APPS = [
     'base',
     'drf_yasg',  # swagger
     'widget_tweaks',
+    'appointment',
+    'django_q',
 ]
 
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTH_USER_MODEL = 'base.Usuario'
+
+APPOINTMENT_WEBSITE_NAME = 'Virtualclinic'
+
+Q_CLUSTER = {
+   'name': 'DjangORM',
+   'workers': 4,
+   'timeout': 90,
+   'retry': 120,
+   'queue_limit': 50,
+   'bulk': 10,
+   'orm': 'default',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
