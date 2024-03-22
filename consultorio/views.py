@@ -1,6 +1,7 @@
 from operator import itemgetter
 
 from admin_material.forms import LoginForm
+from appointment.models import StaffMember
 from django.db.models import Count
 from django.contrib import messages
 from django.contrib.auth import logout, login
@@ -54,8 +55,9 @@ def dashboard_view(request):
                                          "ON paciente.id = consulta.paciente_id "
                                          "WHERE consulta.fecha "
                                          "BETWEEN strftime('%Y-0" + str(mes) + "-01 00:00:00', DATETIME('now')) "
-                                         "AND strftime('%Y-0" + str(mes + 1) + "-01 00:00:00', DATETIME('now')) "
-                                         "AND  paciente.consultorio_id=" + str(request.user.consultorio.id) + ";")[0].cantidad
+                                                                               "AND strftime('%Y-0" + str(
+            mes + 1) + "-01 00:00:00', DATETIME('now')) "
+                       "AND  paciente.consultorio_id=" + str(request.user.consultorio.id) + ";")[0].cantidad
         consultas_por_mes[mes] = consultas
 
     hoy = timezone.localtime(fecha_actual)
@@ -371,6 +373,15 @@ class UsuarioCreate(PermissionRequiredMixin, UsuarioCreateOrUpdateMixin, Success
         grupo = form.cleaned_data['grupo']
         form.instance.groups.add(grupo)
 
+        # agregamos como staff member
+        StaffMember.objects.create(user=user,
+                                   slot_duration=form.cleaned_data['slot_duration'],
+                                   lead_time=form.cleaned_data['lead_time'],
+                                   finish_time=form.cleaned_data['finish_time'],
+                                   appointment_buffer_time=False,
+                                   work_on_saturday=form.cleaned_data['work_on_saturday'],
+                                   work_on_sunday=form.cleaned_data['work_on_sunday'],
+                                   )
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
         reset_url = reverse_lazy('password-reset-confirm', kwargs={'uidb64': uid, 'token': token})

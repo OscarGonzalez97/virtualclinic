@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from django.contrib.auth.models import Group
+from django.utils.translation import gettext_lazy as _
 
 from base.models import Usuario
 from consultorio.constants import TIPOS_USERS
@@ -154,6 +155,38 @@ class UsuarioConsultorioForm(forms.ModelForm):
         queryset=Group.objects.filter(name__in=['Doctor']),
         widget=forms.Select,
         label='Grupo'
+    )
+
+    lead_time = forms.TimeField(
+        label=_('Horario de inicio turno'),
+        required=False,
+        widget=forms.TimeInput(attrs={'placeholder': 'HH:MM', 'type': 'time'}),
+        help_text=_('Hora en que el miembro del personal comienza a trabajar.')
+    )
+
+    finish_time = forms.TimeField(
+        label=_('Horario de fin turno'),
+        required=False,
+        widget=forms.TimeInput(attrs={'placeholder': 'HH:MM', 'type': 'time'}),
+        help_text=_("Hora en que el miembro del personal terminar de trabajar.")
+    )
+
+    work_on_saturday = forms.BooleanField(
+        label=_('Trabaja sábados'),
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input', 'type': 'checkbox'}),
+        required=False
+    )
+
+    work_on_sunday = forms.BooleanField(
+        label=_('Trabaja domingos'),
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        required=False
+    )
+
+    slot_duration = forms.IntegerField(
+        label=_('Duración de consulta (minutos)'),
+        required=False,
+        help_text=_('Tiempo mínimo para una cita en minutos, recomendado 30.')
     )
 
     class Meta:
