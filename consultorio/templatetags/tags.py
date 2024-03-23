@@ -14,3 +14,11 @@ def multiply_and_format(value, arg):
         return intcomma(result)
     except (ValueError, TypeError):
         return value
+
+
+@register.filter
+def traducir(value):
+    """
+    Traduce el valor
+    """
+    return value.replace('hour', 'hora').replace('minute', 'minuto').replace('segundo', 'segundos')
