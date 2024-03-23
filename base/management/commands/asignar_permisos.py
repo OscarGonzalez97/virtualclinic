@@ -84,6 +84,11 @@ class Command(BaseCommand):
             ('consultorio', 'laboratorio', 'add_laboratorio'),
             ('consultorio', 'laboratorio', 'change_laboratorio'),
             ('consultorio', 'laboratorio', 'delete_laboratorio'),
+            ('appointment', 'service', 'list_service'),
+            ('appointment', 'service', 'view_service'),
+            ('appointment', 'service', 'add_service'),
+            ('appointment', 'service', 'change_service'),
+            ('appointment', 'service', 'delete_service'),
             ('consultorio', 'consultorio', 'view_consultorio'),
         ] + pcliente
 
