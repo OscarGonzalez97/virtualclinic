@@ -1,3 +1,4 @@
+from appointment.models import Service
 from django import forms
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from django.contrib.auth.models import Group
@@ -148,6 +149,23 @@ class LaboratorioForm(forms.ModelForm):
     class Meta:
         model = Laboratorio
         fields = ('nombre', 'telefono', 'doctor_encargado', 'direccion')
+
+
+class ServiceForm(forms.ModelForm):
+    precio = forms.DecimalField(max_digits=10)
+
+    class Meta:
+        model = Service
+        fields = ('name', 'duration', 'description')
+        labels = {
+            'name': 'Nombre',
+            'description': 'Descripción',
+            'duration': 'Duración',
+            'price': 'Precio',
+        }
+        widgets = {
+            'duration': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+        }
 
 
 class UsuarioConsultorioForm(forms.ModelForm):

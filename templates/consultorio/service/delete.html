@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load tags %}
+
+{% block title %} Confirmar Eliminación {% endblock title %}
+{% block breadcrumb %}
+<li class="breadcrumb-item text-sm text-dark ms-2"><a href="{% url 'service' %}">Servicios</a></li>
+<li class="breadcrumb-item active text-sm text-dark ms-2" aria-current="page"> Eliminar Servicio </li>
+{% endblock breadcrumb %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card my-4">
+                <div class="card-header bg-danger py-3">
+                    <h6 class="text-white text-uppercase m-0">Confirmar Eliminación</h6>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ confirm_delete_form.service_id }}
+                        <p>¿Estás seguro de que deseas eliminar el Servicio {{ object.name }}?</p>
+                        <p>Información del Servicio:</p>
+                        <ul>
+                            <li>Nombre: {{ object.name }}</li>
+                            <li>Descripción: {{ object..description|default:"-" }}</li>
+                            <li>Duración: {{ object.get_duration|default:"-"|traducir }}</li>
+                            <li>Precio: {{ object.get_price|multiply_and_format:1000 }} {{ object.get_currency_icon }}</li>
+                        </ul>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a href="{% url 'service'%}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

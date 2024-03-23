@@ -50,6 +50,14 @@ urlpatterns = [
             path('delete/', views.TipoEstudioDelete.as_view(), name='tipoestudio-delete'),
         ])),
     ])),
+    path('servicios/', include([
+        path('', views.ServiceList.as_view(), name='service'),
+        path('create/', views.ServiceCreate.as_view(), name='service-create'),
+        path('<int:service_id>/', include([
+            path('edit/', views.ServiceUpdate.as_view(), name='service-edit'),
+            path('delete/', views.ServiceDelete.as_view(), name='service-delete'),
+        ])),
+    ])),
     path('laboratorios/', include([
         path('', views.LaboratorioList.as_view(), name='laboratorios'),
         path('create/', views.LaboratorioCreate.as_view(), name='laboratorio-create'),

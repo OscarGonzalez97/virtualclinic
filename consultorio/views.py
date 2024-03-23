@@ -1,7 +1,7 @@
 from operator import itemgetter
 
 from admin_material.forms import LoginForm
-from appointment.models import StaffMember
+from appointment.models import StaffMember, Service
 from django.db.models import Count
 from django.contrib import messages
 from django.contrib.auth import logout, login
@@ -25,7 +25,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 from base.models import Usuario
 from consultorio.forms import PacienteForm, ConfirmDeleteForm, ConsultaForm, EstudioForm, GeneralEstudioForm, \
     TipoEstudioForm, LaboratorioForm, UserPasswordResetForm, UserSetPasswordForm, ConsultorioForm, \
-    UserPasswordChangeForm, UsuarioConsultorioForm, UsuarioConsultorioRegisterForm
+    UserPasswordChangeForm, UsuarioConsultorioForm, UsuarioConsultorioRegisterForm, ServiceForm
 from consultorio.models import Paciente, Consulta, Estudio, TipoEstudio, Laboratorio, Consultorio, ArchivoConsulta
 
 
@@ -238,7 +238,11 @@ class TipoEstudioDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView
     success_url = reverse_lazy('tipoestudio')
 
     def get_object(self, queryset=None):
-        return TipoEstudio.objects.get(id=self.kwargs['tipoestudio_id'])
+        consultorio = self.request.user.consultorio
+        try:
+            return TipoEstudio.objects.get(id=self.kwargs['tipoestudio_id'], consultorio=consultorio)
+        except TipoEstudio.DoesNotExist:
+            raise Http404("No se encontró un Tipo Estudio con los criterios especificados.")
 
     def get(self, request, *args, **kwargs):
         tipoestudio = self.get_object()
@@ -264,6 +268,72 @@ class TipoEstudioDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView
 
 
 # ------------------ Fin Seccion  Tipo Analisis ------------------
+#
+# ------------------ Seccion Servicio ----------------------
+
+
+class ServiceList(PermissionRequiredMixin, ListView):
+    model = Service
+    template_name = 'consultorio/service/list.html'
+    context_object_name = 'servicios'
+    permission_required = 'appointment.list_service'
+    ordering = 'name'
+
+    def get_queryset(self):
+        return self.request.user.staffmember.services_offered.all().order_by('name')
+
+
+class ServiceCreateOrUpdateMixin:
+    model = Service
+    form_class = ServiceForm
+    template_name = 'consultorio/service/add.html'
+    success_url = reverse_lazy('service')
+
+    def form_valid(self, form):
+        form.instance.currency = "GS."
+        form.instance.price = form.cleaned_data['precio'] / 1000
+        # form.instance.duration = form.instance.duration * 60
+        form.instance.save()
+        usuarios = self.request.user.consultorio.usuarios.all()
+        # guardamos el servicio para todos los usuarios del consultorio
+        for usuario in usuarios:
+            if hasattr(usuario, 'staffmember') and usuario.staffmember:
+                usuario.staffmember.services_offered.add(form.instance)
+        return super().form_valid(form)
+
+
+class ServiceCreate(PermissionRequiredMixin, ServiceCreateOrUpdateMixin, SuccessMessageMixin, CreateView):
+    permission_required = 'appointment.add_service'
+    success_message = "El servicio se ha guardado correctamente."
+
+
+class ServiceUpdate(PermissionRequiredMixin, ServiceCreateOrUpdateMixin, SuccessMessageMixin, UpdateView):
+    permission_required = 'appointment.change_service'
+    success_message = "El servicio se ha actualizado correctamente."
+    pk_url_kwarg = 'service_id'
+
+
+class ServiceDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView):
+    permission_required = 'appointment.delete_service'
+    template_name = 'consultorio/service/delete.html'
+    success_message = "El servicio se ha eliminado correctamente."
+    success_url = reverse_lazy('service')
+
+    def get_object(self, queryset=None):
+        return Service.objects.get(id=self.kwargs['service_id'])
+
+    def get(self, request, *args, **kwargs):
+        service = self.get_object()
+        confirm_delete_form = ConfirmDeleteForm(initial={'service_id': service.id})
+
+        context = {
+            'object': service,
+            'confirm_delete_form': confirm_delete_form,
+        }
+        return render(request, self.template_name, context)
+
+
+# ------------------ Fin Seccion  Servicio ------------------
 
 # ------------------ Seccion Laboratorios ----------------------
 
@@ -308,7 +378,11 @@ class LaboratorioDelete(SuccessMessageMixin, PermissionRequiredMixin, DeleteView
     success_url = reverse_lazy('laboratorios')
 
     def get_object(self, queryset=None):
-        return Laboratorio.objects.get(id=self.kwargs['laboratorio_id'])
+        consultorio = self.request.user.consultorio
+        try:
+            return Laboratorio.objects.get(id=self.kwargs['laboratorio_id'], consultorio=consultorio)
+        except Laboratorio.DoesNotExist:
+            raise Http404("No se encontró un Laboratorio con los criterios especificados.")
 
     def get(self, request, *args, **kwargs):
         laboratorio = self.get_object()
