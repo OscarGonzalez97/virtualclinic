@@ -461,12 +461,20 @@ class UsuarioCreate(PermissionRequiredMixin, UsuarioCreateOrUpdateMixin, Success
         reset_url = reverse_lazy('password-reset-confirm', kwargs={'uidb64': uid, 'token': token})
 
         # Enviar un correo electrónico con el enlace de restablecimiento de contraseña
-        subject = 'Establecimiento de contraseña'
-        message = f'Bienvenido a Virtualclinic señor/a {user.full_name}\n.Haga clic en el siguiente enlace para establecer su contraseña: {self.request.build_absolute_uri(reset_url)}'
-        from_email = 'noreply@virtualclinic.com.py'
-        recipient_list = [user.email]
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        html_content = render_to_string('consultorio/email_usuario.html', {'user': user, 'reset_url': reset_url})
 
+        # Enviar un correo electrónico con el enlace de restablecimiento de contraseña
+        subject = 'Establecimiento de contraseña'
+        to_email = user.email
+        from_email = 'noreply@virtualclinic.com.py'
+        # Obtener el texto plano del contenido HTML
+        text_content = strip_tags(html_content)
+        # Crear el mensaje de correo electrónico
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+        msg.attach_alternative(html_content, "text/html")
+
+        # Enviar el correo electrónico
+        msg.send(fail_silently=False)
         return super().form_valid(form)
 
 
