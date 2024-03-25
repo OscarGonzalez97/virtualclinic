@@ -584,7 +584,21 @@ class UsuarioUpdate(PermissionRequiredMixin, UsuarioCreateOrUpdateMixin, Success
         grupo = form.cleaned_data['grupo']
         form.instance.groups.clear()
         form.instance.groups.add(grupo)
+        # actualizamos datos de staff member
+        staffmember = form.instance.staffmember
+        staffmember.slot_duration = form.cleaned_data['slot_duration']
+        staffmember.lead_time = form.cleaned_data['lead_time']
+        staffmember.finish_time = form.cleaned_data['finish_time']
+        staffmember.work_on_saturday = form.cleaned_data['work_on_saturday']
+        staffmember.work_on_sunday = form.cleaned_data['work_on_sunday']
+        staffmember.save()
         return super().form_valid(form)
+
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['staffmember'] = self.get_object().staffmember
+        return kwargs
 
     def get_object(self, queryset=None):
         consultorio = self.request.user.consultorio

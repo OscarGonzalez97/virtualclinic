@@ -207,6 +207,15 @@ class UsuarioConsultorioForm(forms.ModelForm):
         help_text=_('Tiempo mínimo para una cita en minutos, recomendado 30.')
     )
 
+    def __init__(self, staffmember=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if staffmember:
+            self.fields['lead_time'].initial = staffmember.lead_time
+            self.fields['finish_time'].initial = staffmember.finish_time
+            self.fields['work_on_saturday'].initial = staffmember.work_on_saturday
+            self.fields['work_on_sunday'].initial = staffmember.work_on_sunday
+            self.fields['slot_duration'].initial = staffmember.slot_duration
+
     class Meta:
         model = Usuario
         fields = ('first_name', 'last_name', 'email', 'nro_documento', 'nro_telefono', 'grupo', 'direccion', 'username')
