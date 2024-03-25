@@ -448,14 +448,18 @@ class UsuarioCreate(PermissionRequiredMixin, UsuarioCreateOrUpdateMixin, Success
         form.instance.groups.add(grupo)
 
         # agregamos como staff member
-        StaffMember.objects.create(user=user,
-                                   slot_duration=form.cleaned_data['slot_duration'],
-                                   lead_time=form.cleaned_data['lead_time'],
-                                   finish_time=form.cleaned_data['finish_time'],
-                                   appointment_buffer_time=False,
-                                   work_on_saturday=form.cleaned_data['work_on_saturday'],
-                                   work_on_sunday=form.cleaned_data['work_on_sunday'],
-                                   )
+        new_staff_member = StaffMember.objects.create(user=user,
+                                                      slot_duration=form.cleaned_data['slot_duration'],
+                                                      lead_time=form.cleaned_data['lead_time'],
+                                                      finish_time=form.cleaned_data['finish_time'],
+                                                      appointment_buffer_time=False,
+                                                      work_on_saturday=form.cleaned_data['work_on_saturday'],
+                                                      work_on_sunday=form.cleaned_data['work_on_sunday'],
+                                                      )
+        # le agregamos los servicios que el consultorio tiene
+        servicios_consultorio = self.request.user.staffmember.services_offered.all()
+        for servicio in servicios_consultorio:
+            new_staff_member.services_offered.add(servicio)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
         reset_url = reverse_lazy('password-reset-confirm', kwargs={'uidb64': uid, 'token': token})
